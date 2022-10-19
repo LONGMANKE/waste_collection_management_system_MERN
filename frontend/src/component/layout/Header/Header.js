@@ -5,20 +5,19 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-
 const options = {
-  burgerColorHover: "#eb4034",
+  burgerColorHover: "#028614",
   logo,
   logoWidth: "20vmax",
   navColor1: "white",
   logoHoverSize: "10px", 
-  logoHoverColor: "#eb4034",
+  logoHoverColor: "#028614",
   link1Text: "Home",
-  link2Text: "Services", 
+  link2Text: "Products",
   link3Text: "Contact",
   link4Text: "About",
   link1Url: "/",
-  link2Url: "/services",
+  link2Url: "/products",
   link3Url: "/contact",
   link4Url: "/about",
   link1Size: "1.3vmax",
@@ -27,7 +26,7 @@ const options = {
   nav2justifyContent: "flex-end",
   nav3justifyContent: "flex-start",
   nav4justifyContent: "flex-start",
-  link1ColorHover: "#eb4034",
+  link1ColorHover: "#028614",
   link1Margin: "1vmax",
   profileIconUrl: "/login",
   searchIconUrl: "/search",
@@ -35,9 +34,9 @@ const options = {
   profileIconColor: "rgba(35, 35, 35,0.8)",
   searchIconColor: "rgba(35, 35, 35,0.8)",
   cartIconColor: "rgba(35, 35, 35,0.8)",
-  profileIconColorHover: "#eb4034",
-  searchIconColorHover: "#eb4034",
-  cartIconColorHover: "#eb4034",
+  profileIconColorHover: "#028614",
+  searchIconColorHover: "#028614",
+  cartIconColorHover: "#028614",
   cartIconMargin: "1vmax",
 };
 
@@ -50,8 +49,8 @@ const Header = () => {
     SearchIconElement={SearchIcon}
     cartIcon="true"
     CartIconElement={ShoppingCartIcon}
-    searchIconSize="2.5vmax"
-    cartIconWidth="2.5vmax"
+    SearchIconSize="large"
+    cartIconSize="2vmax"
     fontSize="large"
   />;
 };
