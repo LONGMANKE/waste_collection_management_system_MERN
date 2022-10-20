@@ -9,10 +9,11 @@ import React from 'react';
 import store from "./Store"
 import { loadUser } from './actions/userAction';
 import ProtectedRoute from './component/Route/ProtectedRoute';
-import LoginSignUp from './component/User/LoginSignUp.js';
+import LoginSignUp from './component/User/LoginSignUp.jsx';
 import Profile from './component/User/Profile';
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import UserOptions from "./component/layout/Header/UserOptions.js";
+import About from "./component/layout/About/About.js"; 
 
 
 function App() {
@@ -36,10 +37,9 @@ function App() {
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
         <Route exact path="/login" element={<LoginSignUp />} />
-        {/* <Route exact path="/account" element={< Profile/>} /> */}
-        {/* <ProtectedRoute exact path="/me/update"element={< UpdateProfile />} /> */}
         <Route exact path='/me/update' element={<ProtectedRoute component={UpdateProfile} />} />
         <Route exact path='/account' element={<ProtectedRoute component={Profile} />} />
+        <Route exact path="/about" element={<About/>} />
 
       </Routes>
       <Footer />
