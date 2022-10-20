@@ -3,16 +3,18 @@ import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
+import { useNavigate} from 'react-router-dom';
 import "./Profile.css";
 
-const Profile = ({ history }) => {
+const Profile = () => {
     const { user, loading, isAuthenticated } = useSelector((state) => state.user);
+    const navigate = useNavigate();
   
     useEffect(() => {
       if (isAuthenticated === false) {
-        history.push("/login");
+        navigate("/login");
       }
-    }, [history, isAuthenticated]);
+    }, [navigate , isAuthenticated]);
   return (
     <Fragment>
       {loading ? (

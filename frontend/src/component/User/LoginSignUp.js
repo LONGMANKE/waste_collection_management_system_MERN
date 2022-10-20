@@ -75,9 +75,10 @@ const LoginSignUp = () => {
     }
   }; 
   const location = useLocation();
+  const navigate = useNavigate();
+
   // const history = useHistory();
   //history doesnt work in the latest react-router-dom ref- https://stackoverflow.com/questions/62861269/attempted-import-error-usehistory-is-not-exported-from-react-router-dom
-  const navigate = useNavigate();
   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {

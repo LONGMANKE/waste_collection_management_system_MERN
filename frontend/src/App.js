@@ -6,8 +6,11 @@ import Footer from "./component/layout/Footer/Footer.js"
 import WebFont from "webfontloader"
 import React from 'react';
 import store from "./Store"
-import LoginSignUp from './component/User/LoginSignUp.js';
 import { loadUser } from './actions/userAction';
+import ProtectedRoute from './component/Route/ProtectedRoute';
+import LoginSignUp from './component/User/LoginSignUp.js';
+import Profile from './component/User/Profile';
+import UpdateProfile from "./component/User/UpdateProfile.js";
 
 
 function App() {
@@ -28,6 +31,9 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/login" element={<LoginSignUp />} />
+        <Route exact path="/account" element={< Profile/>} />
+        {/* <ProtectedRoute exact path="/me/update"element={< UpdateProfile />} /> */}
+        <Route exact path='/me/update' element={<ProtectedRoute component={UpdateProfile} />} />
       </Routes>
       <Footer />
 

@@ -10,11 +10,11 @@ const cloudinary = require("cloudinary");
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
-  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  //   folder: "avatars",
-  //   width: 150,
-  //   crop: "scale",
-  // });
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "Profile",
+    width: 150,
+    crop: "scale",
+  });
 
   const { name, email, password } = req.body;
 
@@ -23,15 +23,15 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     //before cloudary
-    avatar: {
-      public_id: "This is a simple id",
-      url: "profilepicUrl",
-    },
-
     // avatar: {
-    //   public_id: myCloud.public_id,
-    //   url: myCloud.secure_url,
+    //   public_id: "This is a simple id",
+    //   url: "profilepicUrl",
     // },
+
+    avatar: {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    },
   });
 
   //before use of jwtToken in utils this was the code
