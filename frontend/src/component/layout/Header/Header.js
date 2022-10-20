@@ -6,12 +6,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const options = {
-  burgerColorHover: "#028614",
+  burgerColorHover: "#008710",
   logo,
   logoWidth: "20vmax",
   navColor1: "white",
   logoHoverSize: "10px", 
-  logoHoverColor: "#028614",
+  logoHoverColor: "#008710",
   link1Text: "Home",
   link2Text: "Products",
   link3Text: "Contact",
@@ -26,7 +26,7 @@ const options = {
   nav2justifyContent: "flex-end",
   nav3justifyContent: "flex-start",
   nav4justifyContent: "flex-start",
-  link1ColorHover: "#028614",
+  link1ColorHover: "#008710",
   link1Margin: "1vmax",
   profileIconUrl: "/login",
   searchIconUrl: "/search",
@@ -34,9 +34,9 @@ const options = {
   profileIconColor: "rgba(35, 35, 35,0.8)",
   searchIconColor: "rgba(35, 35, 35,0.8)",
   cartIconColor: "rgba(35, 35, 35,0.8)",
-  profileIconColorHover: "#028614",
-  searchIconColorHover: "#028614",
-  cartIconColorHover: "#028614",
+  profileIconColorHover: "#008710",
+  searchIconColorHover: "#008710",
+  cartIconColorHover: "#008710",
   cartIconMargin: "1vmax",
 };
 

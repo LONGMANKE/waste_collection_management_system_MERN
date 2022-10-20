@@ -21,9 +21,12 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
+    "cloudinary": "^1.32.0",
+    "cloudinary-react": "^1.8.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
     "gitignore": "^0.7.0",
     "google-auth-library": "^8.6.0",
     "jsonwebtoken": "^8.5.1",
