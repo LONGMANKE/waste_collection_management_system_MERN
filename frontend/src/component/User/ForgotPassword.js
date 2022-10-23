@@ -19,6 +19,7 @@ const ForgotPassword = () => {
 
   const forgotPasswordSubmit = (e) => {
     e.preventDefault();
+    
 
     const myForm = new FormData();
 

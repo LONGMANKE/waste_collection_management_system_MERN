@@ -1,8 +1,9 @@
 const nodeMailer = require("nodemailer");
+const OAuth2 = require('google-auth-library');
 
 //ensure that the Gmail to be used doesnt have 2FA and if so go to the manage settings of your Gmail and add an app to get a password 
 const sendEmail = async (options) => {
- 
+
     const transporter = nodeMailer.createTransport({
         port: process.env.SMPT_PORT,
         service: 'gmail',
@@ -15,10 +16,11 @@ const sendEmail = async (options) => {
             pass: process.env.SMPT_PASSWORD,
           
         },
+        secureConnection: false,
     })
     //this options are in Under controller in the Get resetPassword Token in try and catch 
 
-    const mailOptions = {
+    const mailOptions = { 
         from: process.env.SMPT_MAIL,
         to: options.email,
         subject: options.subject,

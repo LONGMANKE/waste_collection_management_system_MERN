@@ -28,7 +28,7 @@ const Sidebar = () => {
                <DashboardIcon className="icon"/>
                     <span>Dashboard</span>
                     </li>
-                   <Link to="/users">
+                   <Link to="/admin/users">
                     <li>
                       <PersonIcon className="icon"/>
                     <span>Users</span>
@@ -38,7 +38,7 @@ const Sidebar = () => {
                     <Link to="/products">
                     <li>
                       <StoreMallDirectoryOutlinedIcon className="icon"/>
-                    <span>Products</span>
+                    <span>Services</span>
                     </li>
                     </Link>
                     <li>

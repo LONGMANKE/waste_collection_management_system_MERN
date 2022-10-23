@@ -116,9 +116,9 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  // const resetPasswordUrl = `${req.protocol}://${req.get(
-  // const resetPasswordUrl = `${process.env.FRONTEND_URL}/api/v1/password/reset/${resetToken}`;
+  //b4 deployment
   const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+ 
 
 
   const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
@@ -300,26 +300,44 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
   })
 })
 //Delete user Admin
+//cloudinary
+// exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
+
+//   const user = await User.findById(req.params.id)
+
+//   //we will remove cloudinary later
+  
+//   if (!user) {
+//     return next(new ErrorHandler(`User doen't exist with id ${req.params.id}`));
+//   }
+//   const imageId = user.avatar.public_id;
+
+//   await cloudinary.v2.uploader.destroy(imageId);
+//   await user.remove();
+//   //sendToken(user, 200,res);
+
+
+//   res.status(200).json({
+//     success: true,
+//     message: "User Deleted Successfully"
+//   })
+// })
+
+//Delete user Admin
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
 
   const user = await User.findById(req.params.id)
-
-  //we will remove cloudinary later
+    //we will remove cloudinary later
+   if (!user) {
+      return next(new ErrorHandler(`User doen't exist with id ${req.params.id}`));
+    }
   
-  if (!user) {
-    return next(new ErrorHandler(`User doen't exist with id ${req.params.id}`));
-  }
-  const imageId = user.avatar.public_id;
-
-  await cloudinary.v2.uploader.destroy(imageId);
-  await user.remove();
-  //sendToken(user, 200,res);
-
-
-  res.status(200).json({
-    success: true,
-    message: "User Deleted Successfully"
+    await user.remove();
+    //sendToken(user, 200,res);
+  
+  
+    res.status(200).json({
+      success: true,
+      message: "User Deleted Successfully"
+    })
   })
-})
-
-

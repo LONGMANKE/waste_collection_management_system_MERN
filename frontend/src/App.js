@@ -19,6 +19,8 @@ import UserOptions from "./component/layout/Header/UserOptions.js";
 import About from "./component/layout/About/About.js";
 import Home from './component/home/Home';
 
+import UsersList from "./component/Admin/UsersList.js";
+
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -49,6 +51,8 @@ function App() {
 
       <Route exact path="/password/forgot" element={<ForgotPassword/>} />
       <Route exact path="/password/reset/:token" element={<ResetPassword/>} />
+      <Route exact path="/admin/users" element={<ProtectedRoute   component={UsersList} />} />
+
         <Route exact path="/about" element={<About />} />
      
       </Routes>

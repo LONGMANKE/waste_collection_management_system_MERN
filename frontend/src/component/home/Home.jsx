@@ -1,5 +1,4 @@
-import Navbar from "../components/navbar/Navbar"
-import Sidebar from "../components/sidebar/Sidebar"
+import Sidebar from "../Admin/sidebar/Sidebar"
 import Widget from "../components/widget/Widget"
 import List from "../components/table/Table"
 import "./home.scss"
