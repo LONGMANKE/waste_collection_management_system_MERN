@@ -1,9 +1,8 @@
 const nodeMailer = require("nodemailer");
-const OAuth2 = require('google-auth-library');
 
 //ensure that the Gmail to be used doesnt have 2FA and if so go to the manage settings of your Gmail and add an app to get a password 
 const sendEmail = async (options) => {
-
+ 
     const transporter = nodeMailer.createTransport({
         port: process.env.SMPT_PORT,
         service: 'gmail',
