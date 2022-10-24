@@ -1,73 +1,77 @@
-import React from "react";
-import "./sidebar.css";
-import logo from "../../images/logo.png";
+import "./sidebar.scss"
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import PersonIcon from '@mui/icons-material/Person';
+import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
+import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import React from "react"
 import { Link } from "react-router-dom";
-// import { TreeView, TreeItem } from "@material-ui/lab";
-// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import AddIcon from "@mui/icons-material/Add";
-// import ImportExportIcon from "@mui/icons-material/ImportExport";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
-import RateReviewIcon from "@mui/icons-material/RateReview";
+import { logout } from "../../actions/userAction";
+import { useAlert } from "react-alert";
+import { useDispatch } from "react-redux";
+
+
 
 const Sidebar = () => {
+
+  const alert = useAlert();
+  const dispatch = useDispatch();
+
+  function logoutUser() {
+    dispatch(logout());
+    alert.success("Logout Successfully");
+  }
   return (
-    <div className="sidebar">
-      <Link to="/">
-        <img src={logo} alt="Ecommerce" />
-      </Link>
-      <Link to="/admin/dashboard">
-        <p>
-          <DashboardIcon /> Dashboard
-        </p>
-      </Link>
-        {/* <TreeView
-          defaultCollapseIcon={<ExpandMoreIcon />}
-          defaultExpandIcon={<ImportExportIcon />}
-        >
-          
-          <TreeItem nodeId="1" label="Products">
-            <Link to="/admin/products">
-              <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
-            </Link>
+    <div className="sidebar" >
+      <div className="top"><span className="logo">Waste CSM Admin</span></div>
+      <hr />
+      <div className="center">
+        <ul>
+          <p className="title"> MAIN</p>
+          <li>
+            <DashboardIcon className="icon" />
+            <span>Dashboard</span>
+          </li>
+          <Link to="/admin/users">
+            <li>
+              <PersonIcon className="icon" />
+              <span>Users</span>
+            </li>
+          </Link>
+          <p className="title">LIST</p>
+          <Link to="/products">
+            <li>
+              <StoreMallDirectoryOutlinedIcon className="icon" />
+              <span>Services</span>
+            </li>
+          </Link>
+          <li>
+            <DeliveryDiningOutlinedIcon className="icon" />
+            <span>Delivery</span>
+          </li>
 
-            <Link to="/admin/product">
-              <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
-            </Link>
-          </TreeItem>
-        </TreeView> */}
-        <Link to="/admin/products">
-        <p>
-          <PostAddIcon /> All Products
-        </p>
-            </Link>
-            <Link to="/admin/product">
-        <p>
-          <AddIcon /> Create Product
-        </p>
-            </Link>
-     
-      <Link to="/admin/orders">
-        <p>
-          <ListAltIcon />
-          Orders
-        </p>
-      </Link>
-      <Link to="/admin/users">
-        <p>
-          <PeopleIcon /> Users
-        </p>
-      </Link>
-      <Link to="/admin/reviews">
-        <p>
-          <RateReviewIcon />
-          Reviews
-        </p>
-      </Link>
+          <p className="title">USER</p>
+          <Link to="/account">
+            <li>
+              <PermIdentityIcon className="icon" />
+              <span>Profile</span>
+            </li>
+          </Link>
+
+          <li>
+            <ExitToAppIcon className="icon" />
+            <span onClickCapture={logoutUser}>Logout</span>
+          </li>
+        </ul>
+      </div>
+      <div className="bottom">
+        <div className="colorOption"></div>
+        <div className="colorOption"></div>
+      </div>
+
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

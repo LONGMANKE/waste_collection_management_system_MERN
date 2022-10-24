@@ -17,7 +17,8 @@ import ForgotPassword from './component/User/ForgotPassword.js';
 import ResetPassword from "./component/User/ResetPassword.js";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import About from "./component/layout/About/About.js";
-import Home from './component/home/Home';
+import Dashboard from './component/Admin/Dashboard';
+
 
 import UsersList from "./component/Admin/UsersList.js";
 
@@ -42,11 +43,11 @@ function App() {
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        {/* <Route exact path="/" element={<Home />} /> */}
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route exact path='/me/update' element={<ProtectedRoute component={UpdateProfile} />} />
         <Route exact path='/account' element={<ProtectedRoute component={Profile} />} />
-        <Route exact path='/admin/dashboard' element={<ProtectedRoute   component={Home} />} />
+        <Route exact path='/admin/dashboard' element={<ProtectedRoute   component={Dashboard} />} />
         <Route exact path="/password/update" element={<ProtectedRoute   component={UpdatePassword} />} />
 
       <Route exact path="/password/forgot" element={<ForgotPassword/>} />

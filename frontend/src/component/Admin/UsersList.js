@@ -8,7 +8,7 @@ import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SideBar from "./sidebar/Sidebar"
+import SideBar from "./Sidebar"
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
