@@ -10,12 +10,12 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useAlert } from "react-alert";
 import { logout } from "../../../actions/userAction";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {useNavigate} from 'react-router-dom';
 
 
 const UserOptions = ({ user }) => {
-    // const { cartItems } = useSelector((state) => state.cart);
+    const { cartItems } = useSelector((state) => state.cart);
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();      
     const alert = useAlert();
@@ -28,10 +28,10 @@ const UserOptions = ({ user }) => {
         {
             icon: (
               <ShoppingCartIcon
-                // style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+                style={{ color: cartItems.length > 0 ? "#008710" : "unset" }}
               />
             ),
-            // name: `Cart(${cartItems.length})`,
+            name: `Cart(${cartItems.length})`,
             name: "Cart",
             func: cart,
           },

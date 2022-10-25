@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from 'react'
 import { CgMouse } from "react-icons/cg"
 import "./Home.css";
-import ProductCard from "./ProductCard.js";
+import ServiceCard from "./ServiceCard.js";
 import MetaData from "../layout/MetaData";
 import { getProduct } from "../../actions/productAction";
 import { useDispatch, useSelector } from "react-redux"
 import Loader from '../layout/Loader/Loader';
-// import { useAlert } from 'react-alert';
+import { useAlert } from 'react-alert';
 
 
 
@@ -19,19 +19,19 @@ import Loader from '../layout/Loader/Loader';
 // }
 
 const Home = () => {
-  // const alert = useAlert();
+  const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading,products } = useSelector((state) => state.products);
+  const { loading,services, error } = useSelector((state) => state.services);
 
   useEffect(() => { 
-    // if (error) { 
+    if (error) { 
       
-    //   return alert.error(error);
+      return alert.error(error);
       
-    // }
+    }
     dispatch(getProduct());
   },
-    [dispatch]);
+    [dispatch, error, alert]);
 
   return (
     <Fragment> 
@@ -42,8 +42,8 @@ const Home = () => {
         <Fragment>
           <MetaData title="LONGMANKE SHOP" />
           <div className="banner">
-            <p>Welcome to LongmanKE Shop</p>
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
+            <p>Welcome to Waste collection services</p>
+            <h1>GET THE BEST SERVICES BELOW</h1>
 
             <a href="#container">
               <button>
@@ -51,13 +51,13 @@ const Home = () => {
               </button>
             </a>
           </div>
-          <h2 className="homeHeading">Featured Products</h2>
+          <h2 className="homeHeading">Featured services</h2>
 
           <div className="container" id="container">
 
-            {products &&
-              products.map((product) =>
-                <ProductCard product={product} />
+            {services &&
+              services.map((service) =>
+                <ServiceCard service={service} />
               )}
           </div>
         </Fragment>)}

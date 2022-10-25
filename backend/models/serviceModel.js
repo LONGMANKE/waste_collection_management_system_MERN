@@ -34,12 +34,12 @@ const serviceSchema = mongoose.Schema({
         type: String,
         required: [true, "Please enter product category"]
     },
-    // Stock: {
-    //     type: Number,
-    //     require: [true, "Please enter product stock"],
-    //     maxLength: [4, "Stock cannot exceed 4 characters"],
-    //     default: 1
-    // },
+    Stock: {
+        type: Number,
+        require: [true, "Please enter product stock"],
+        maxLength: [4, "Stock cannot exceed 4 characters"],
+        default: 1
+    },
     numOfReviews: {
         type: Number,
         default: 0

@@ -2,6 +2,7 @@ const Service = require("../models/serviceModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
+const { findById } = require("../models/serviceModel");
 const cloudinary = require("cloudinary");
 
 // create A Service --Admin
@@ -250,7 +251,6 @@ exports.deleteService = catchAsyncErrors(async (req, res, next) => {
 
 //create review or update review
 
-
 exports.createServiceReview = catchAsyncErrors(async (req, res, next) => {
     const { rating, comment, serviceId } = req.body;
 
@@ -261,40 +261,40 @@ exports.createServiceReview = catchAsyncErrors(async (req, res, next) => {
         comment,
     }
     const service = await Service.findById(serviceId);
-    const isReviewed = service.reviews.find(
-        rev => rev.user.toString() === req.user._id)
-    if (isReviewed) {
-        service.reviews.forEach(rev => {
-            if (rev => rev.user.toString() === req.user._id)
-                rev.rating = rating,
-                    rev.comment = comment
-        })
-    }
+    
+        const isReviewed = service.reviews.find(
+            rev => rev.user.toString() === req.user._id)
+        if (isReviewed) {
+            service.reviews.forEach(rev => {
+                if (rev => rev.user.toString() === req.user._id)
+                    rev.rating = rating,
+                        rev.comment = comment
+            })
+        }
     else {
         service.reviews.push(review);
         service.numOfReviews = service.reviews.length
     }
-
+   
 
     let avg = 0;
-    // 4,5,5,2 = 166/==4=4
-    service.reviews.forEach(rev => {
-        avg = avg + rev.rating
+ // 4,5,5,2 = 166/==4=4
+ service.reviews.forEach(rev => {
+    avg = avg + rev.rating
 
-        //avg+= rev.rating
+    //avg+= rev.rating
 
-    })
+})
 
-    service.ratings = avg / service.reviews.length
+    service.ratings = avg  / service.reviews.length
 
     await service.save({
         validateBeforeSave: false
     })
     res.status(200).json({
-        success: true,
+        success:true,
     })
 });
-
 //Get all reviews  
 exports.getServiceReviews = catchAsyncErrors(async (req, res, next) => {
     const service = await Service.findById(req.query.id);

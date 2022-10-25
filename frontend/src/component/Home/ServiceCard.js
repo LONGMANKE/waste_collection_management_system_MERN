@@ -4,29 +4,30 @@ import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component"
 
 
-const productCard= ({product}) => {
+const ServiceCard= ({service}) => {
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1",
-    activeColor:"tomato",
+    activeColor:" #008710",
     size: window.innerWidth <600 ? 20 :25,
-    value: product.ratings,
+    value: service.ratings,
     isHalf: true,
   };
   return (
-    <Link className="productCard" to={`/product/${product._id}`}>
-      <img src={product.images.url} alt={product.name} />
-      <p>{product.name}</p>
+    <Link className="ServiceCard" to={`/services/${service._id}`}>
+      <img src={service.images.url} alt={service.name} />
+      <p>{service.name}</p>
       <div>
+
         <ReactStars {...options} />{" "}
-        <span className="productCardSpan">
+        <span className="ServiceCardSpan">
          
-          ({product.numOfReviews}Reviews) 
+          ({service.numOfReviews}Reviews) 
         </span> 
       </div>
-      <span>{`ksh ${product.price}`}</span>
+      <span>{`ksh ${service.price}`}</span>
     </Link>
   );
 };
 
-export default productCard;  
+export default ServiceCard;  
