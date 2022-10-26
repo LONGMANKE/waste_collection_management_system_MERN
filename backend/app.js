@@ -18,10 +18,11 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true,
 
 const user = require("./routes/userRoute");
 const service = require("./routes/serviceRoute")
-
+const order = require("./routes/orderRoute");
 
 app.use("/api/v1", user);
 app.use("/api/v1", service);
+app.use("/api/v1", order);
 
 //Middleware for Errors
 app.use(errorMiddleware);

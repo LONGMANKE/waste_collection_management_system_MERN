@@ -1,5 +1,5 @@
 const Order = require("../models/orderModel");
-const Product = require("../models/productModel");
+const Service = require("../models/serviceModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
@@ -93,7 +93,7 @@ exports.UpdateOrder = catchAsyncErrors(async (req, res, next) => {
 
     if (req.body.status === "Shipped") {
         order.orderItems.forEach(async (o) => {
-          await updateStock(o.product, o.quantity);
+          await updateStock(o.service, o.quantity);
         });
       }
     order.orderStatus = req.body.status;
@@ -109,9 +109,9 @@ exports.UpdateOrder = catchAsyncErrors(async (req, res, next) => {
 })
 //created to sort the await function error
 async function updateStock(id, quantity) {
-    const product = await Product.findById(id)
-    product.Stock -= quantity
-    await product.save({ ValidateBeforeSave: false })
+    const service = await service.findById(id)
+    service.Stock -= quantity
+    await service.save({ ValidateBeforeSave: false })
 }
 
 

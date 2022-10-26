@@ -73,7 +73,7 @@ export const servicesReducer = (state = { services: [] }, action) => {
   }
 };
 
-export const newserviceReducer = (state = { service: {} }, action) => {
+export const newServiceReducer = (state = { service: {} }, action) => {
   switch (action.type) {
     case NEW_SERVICE_REQUEST:
       return {

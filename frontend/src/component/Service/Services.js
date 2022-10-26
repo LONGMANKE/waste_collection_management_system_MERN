@@ -1,6 +1,6 @@
 
 import React, { Fragment, useEffect, useState } from "react";
-import "./Products.css"
+import "./Services.css"
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getService } from "../../actions/serviceAction";
 import Loader from "../layout/Loader/Loader";
@@ -14,7 +14,7 @@ import { useAlert } from "react-alert";
 const categories = [
     "Laptop",
     "Footwear",
-    "Bottom",
+    "Bottom", 
     "Tops",
     "Attire",
     "Camera",

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import "./ProductDetails.css"
+import "./ServiceDetails.css"
 import { useSelector, useDispatch } from "react-redux"
 import { newReview, clearErrors, getServiceDetails } from "../../actions/serviceAction"
 import ReactStars from "react-rating-stars-component"
@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 import { addItemsToCart } from "../../actions/cartActions";
 
-import {
+import { 
   Dialog,
   DialogActions,
   DialogContent,
