@@ -32,16 +32,16 @@ import {
   DELETE_REVIEW_FAIL,
   DELETE_REVIEW_RESET,
   CLEAR_ERRORS,
-} from "../constants/productConstants";
+} from "../constants/serviceConstants";
 
-export const productsReducer = (state = { services: [] }, action) => {
+export const servicesReducer = (state = { services: [] }, action) => {
   switch (action.type) {
     case ALL_SERVICE_REQUEST:
     case ADMIN_SERVICE_REQUEST:
       return {
         loading: true,
-        services: [],
-      };
+        services: [],  
+      }; 
     case ALL_SERVICE_SUCCESS:
       return {
         loading: false,
@@ -73,7 +73,7 @@ export const productsReducer = (state = { services: [] }, action) => {
   }
 };
 
-export const newProductReducer = (state = { service: {} }, action) => {
+export const newserviceReducer = (state = { service: {} }, action) => {
   switch (action.type) {
     case NEW_SERVICE_REQUEST:
       return {
@@ -107,7 +107,7 @@ export const newProductReducer = (state = { service: {} }, action) => {
   }
 };
 
-export const productReducer = (state = {}, action) => {
+export const serviceReducer = (state = {}, action) => {
   switch (action.type) {
     case DELETE_SERVICE_REQUEST:
     case UPDATE_SERVICE_REQUEST:
@@ -155,7 +155,7 @@ export const productReducer = (state = {}, action) => {
   }
 };
 
-export const productDetailsReducer = (state = { service: {} }, action) => {
+export const serviceDetailsReducer = (state = { service: {} }, action) => {
   switch (action.type) {
     case SERVICE_DETAILS_REQUEST:
       return {
@@ -216,7 +216,7 @@ export const newReviewReducer = (state = {}, action) => {
   }
 };
 
-export const productReviewsReducer = (state = { reviews: [] }, action) => {
+export const serviceReviewsReducer = (state = { reviews: [] }, action) => {
   switch (action.type) {
     case ALL_REVIEW_REQUEST:
       return {

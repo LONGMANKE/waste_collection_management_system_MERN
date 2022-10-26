@@ -29,10 +29,10 @@ import {
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAIL,
   CLEAR_ERRORS,
-} from "../constants/productConstants";
+} from "../constants/serviceConstants";
 
 // Get All services
-export const getProduct =
+export const getService =
   (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
   async (dispatch) => {
     try {
@@ -58,8 +58,8 @@ export const getProduct =
     }
   };
 
-// Get All Products For Admin
-export const getAdminProduct = () => async (dispatch) => {
+// Get All services For Admin
+export const getAdminService = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_SERVICE_REQUEST });
 
@@ -67,7 +67,7 @@ export const getAdminProduct = () => async (dispatch) => {
 
     dispatch({
       type: ADMIN_SERVICE_SUCCESS,
-      payload: data.products,
+      payload: data.services,
     });
   } catch (error) {
     dispatch({
@@ -77,8 +77,8 @@ export const getAdminProduct = () => async (dispatch) => {
   }
 };
 
-// Create Product
-export const createProduct = (productData) => async (dispatch) => {
+// Create service
+export const createService = (serviceData) => async (dispatch) => {
   try {
     dispatch({ type: NEW_SERVICE_REQUEST });
 
@@ -87,8 +87,8 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v1/admin/product/new`,
-      productData,
+      `/api/v1/admin/service/new`,
+      serviceData,
       config
     );
 
@@ -104,8 +104,8 @@ export const createProduct = (productData) => async (dispatch) => {
   }
 };
 
-// Update Product
-export const updateProduct = (id, productData) => async (dispatch) => {
+// Update service
+export const updateService = (id, serviceData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_SERVICE_REQUEST });
 
@@ -114,8 +114,8 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/admin/product/${id}`,
-      productData,
+      `/api/v1/admin/service/${id}`,
+      serviceData,
       config
     );
 
@@ -132,7 +132,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 };
 
 // Delete Product
-export const deleteProduct = (id) => async (dispatch) => {
+export const deleteService = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_SERVICE_REQUEST });
 
@@ -151,7 +151,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 };
 
 // Get Products Details
-export const getProductDetails = (id) => async (dispatch) => {
+export const getServiceDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: SERVICE_DETAILS_REQUEST });
 

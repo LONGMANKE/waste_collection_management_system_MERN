@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import "./ProductDetails.css"
 import { useSelector, useDispatch } from "react-redux"
-import { newReview, clearErrors, getProductDetails } from "../../actions/productAction"
+import { newReview, clearErrors, getServiceDetails } from "../../actions/serviceAction"
 import ReactStars from "react-rating-stars-component"
 import ReviewCard from "./ReviewCard.js";
 import Loader from '../layout/Loader/Loader';
@@ -19,7 +19,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
-import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import { NEW_REVIEW_RESET } from "../../constants/serviceConstants";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -96,7 +96,7 @@ const ProductDetails = () => {
       alert.success("Review Submitted Successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
-    dispatch(getProductDetails(id));
+    dispatch(getServiceDetails(id));
   }, [dispatch,id, error, alert, reviewError, success]);
 
 

@@ -2,7 +2,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./Products.css"
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getProduct } from "../../actions/productAction";
+import { clearErrors, getService } from "../../actions/serviceAction";
 import Loader from "../layout/Loader/Loader";
 import ProductCard from "../Home/ProductCard";
 import MetaData from "../../component/layout/MetaData"
@@ -47,7 +47,7 @@ const Products = ({ match }) => {
             dispatch(clearErrors());
           }
 
-        dispatch(getProduct(keyword, currentPage, price, category, ratings))
+        dispatch(getService(keyword, currentPage, price, category, ratings))
     }, [dispatch,error, keyword, currentPage, price, category, ratings, alert]);
 
 

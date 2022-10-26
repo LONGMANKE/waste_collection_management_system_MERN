@@ -2,7 +2,7 @@ import { legacy_createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { allUsersReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer, } from "./reducers/userReducer";
-import { newProductReducer, newReviewReducer, productDetailsReducer, productReducer, productReviewsReducer, productsReducer, reviewReducer } from "./reducers/productReducer";
+import { newserviceReducer, newReviewReducer, serviceDetailsReducer, serviceReducer, serviceReviewsReducer, servicesReducer, reviewReducer } from "./reducers/serviceReducer";
 import { cartReducer } from "./reducers/cartReducer";
 const reducer = combineReducers({
   user: userReducer,
@@ -10,9 +10,9 @@ const reducer = combineReducers({
   profile: profileReducer,
   users: allUsersReducer,
   userDetails: userDetailsReducer,
-  services: productsReducer,
-  serviceDetails: productDetailsReducer,
-  service: productReducer,
+  services: servicesReducer,
+  serviceDetails: serviceDetailsReducer,
+  service: serviceReducer,
   newReview: newReviewReducer,
   cart: cartReducer,
   
