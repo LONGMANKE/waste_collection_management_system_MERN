@@ -34,7 +34,7 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
+    navigate("/shipping");
   };
 
   return (
@@ -64,7 +64,7 @@ const Cart = () => {
                         decreaseQuantity(item.service, item.quantity)
                       }
                     >
-                      
+                      -
                     </button>
                     <input type="number" value={item.quantity} readOnly />
                     <button
