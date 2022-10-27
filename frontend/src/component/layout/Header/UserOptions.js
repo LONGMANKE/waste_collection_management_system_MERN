@@ -32,7 +32,6 @@ const UserOptions = ({ user }) => {
               />
             ),
             name: `Cart(${cartItems.length})`,
-            name: "Cart",
             func: cart,
           },
 

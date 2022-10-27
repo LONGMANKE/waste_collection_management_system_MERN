@@ -24,7 +24,7 @@ import ServiceDetails from "./component/Service/ServiceDetails.js"
 import UsersList from "./component/Admin/UsersList.js";
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
-
+// import Payment from "./component/Cart/Payment.js"
 
 
 function App() {
@@ -62,6 +62,7 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/shipping" element={<ProtectedRoute component={Shipping} />} />
         <Route exact path="/order/confirm" element={<ProtectedRoute component={ConfirmOrder} />} />
+        {/* <Route exact path="/process/payment" element={<ProtectedRoute component={Payment} />} /> */}
 
         <Route exact path="/about" element={<About />} />
 

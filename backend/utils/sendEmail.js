@@ -5,11 +5,11 @@ const OAuth2 = require('google-auth-library');
 const sendEmail = async (options) => {
 
     const transporter = nodeMailer.createTransport({
-        port: process.env.SMPT_PORT,
-        service: 'gmail',
-        type: "SMTP",
         host: process.env.SMPT_HOST,
-        secure: true,
+        port: process.env.SMPT_PORT,
+        // service: 'gmail',
+        // type: "SMTP",
+        secure: false,
         auth: {
             
             user: process.env.SMPT_MAIL,
@@ -17,7 +17,8 @@ const sendEmail = async (options) => {
           
         },
         secureConnection: false,
-    })
+    },  
+    )
     //this options are in Under controller in the Get resetPassword Token in try and catch 
 
     const mailOptions = { 
