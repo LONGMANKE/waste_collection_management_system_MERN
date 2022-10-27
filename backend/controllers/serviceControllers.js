@@ -241,7 +241,7 @@ exports.deleteService = catchAsyncErrors(async (req, res, next) => {
 
 
 
-        res.status(201).json({
+        res.status(201).json({ 
             success: true,
             message: "service deleted successfully"
 
@@ -254,7 +254,7 @@ exports.deleteService = catchAsyncErrors(async (req, res, next) => {
 exports.createServiceReview = catchAsyncErrors(async (req, res, next) => {
     const { rating, comment, serviceId } = req.body;
 
-    const review = {
+    const review = { 
         user: req.user._id,
         name: req.user.name,
         rating: Number(rating),

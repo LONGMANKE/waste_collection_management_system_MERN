@@ -4,12 +4,14 @@ import "./Services.css"
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getService } from "../../actions/serviceAction";
 import Loader from "../layout/Loader/Loader";
-import ProductCard from "../Home/ProductCard";
+import ServiceCard from "../Home/ServiceCard";
 import MetaData from "../../component/layout/MetaData"
 import Pagination from "react-js-pagination"
 import { Slider } from '@mui/material';
 import { Typography } from '@mui/material';
 import { useAlert } from "react-alert";
+import { useParams } from "react-router-dom";
+
 
 const categories = [
     "Laptop",
@@ -21,17 +23,19 @@ const categories = [
     "SmartPhones",
 ];
 
-const Products = ({ match }) => {
+const Services = () => {
 
     const dispatch = useDispatch();
     const alert = useAlert();
+  const { keyword} = useParams();
+
     const [currentPage, setcurrentPage] = useState(1)
     const [price, setPrice] = useState([0, 11000]);
     const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
-    const { loading, products, error,productsCount,resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
+    const { loading, services, error,servicesCount,resultPerPage, filteredServicesCount } = useSelector((state) => state.services);
 
-    const keyword = match.params.keyword;
+
 
     const setCurrentPageNo = (e) => {
         setcurrentPage(e);
@@ -39,7 +43,7 @@ const Products = ({ match }) => {
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
     };
-    let count = filteredProductsCount;
+    let count = filteredServicesCount;
 
     useEffect(() => {
         if (error) {
@@ -59,13 +63,13 @@ const Products = ({ match }) => {
                 <Loader />
             ) : (
                 <Fragment>
-                    <MetaData title="PRODUCTS -- ECOMMERCE" />
-                    <h2 className="productsHeading">Products</h2>
+                    <MetaData title="SERVICES -- WASTE" />
+                    <h2 className="productsHeading">SERVICES</h2>
 
                     <div className="products">
-                        {products &&
-                            products.map((product) => (
-                                <ProductCard key={product._id} product={product} />
+                        {services &&
+                            services.map((service) => (
+                                <ServiceCard key={service._id} service={service} />
                             ))}
                     </div>
 
@@ -114,7 +118,7 @@ const Products = ({ match }) => {
                             <Pagination
                                 activePage={currentPage}
                                 itemsCountPerPage={resultPerPage}
-                                totalItemsCount={productsCount}
+                                totalItemsCount={servicesCount}
                                 onChange={setCurrentPageNo}
                                 nextPageText="Next"
                                 prevPageText="Prev"
@@ -133,4 +137,4 @@ const Products = ({ match }) => {
     )
 }
 
-export default Products 
+export default Services 

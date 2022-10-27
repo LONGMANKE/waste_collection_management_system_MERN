@@ -40,7 +40,7 @@ const Home = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="LONGMANKE SHOP" />
+          <MetaData title="WASTE CMS" />
           <div className="banner">
             <p>Welcome to Waste collection services</p>
             <h1>GET THE BEST SERVICES BELOW</h1>

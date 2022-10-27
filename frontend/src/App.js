@@ -21,12 +21,12 @@ import About from "./component/layout/About/About.js";
 import Dashboard from './component/Admin/Dashboard';
 import Cart from "./component/Cart/Cart.js";
 import ServiceDetails from "./component/Service/ServiceDetails.js"
+import Services from "./component/Service/Services"
 import UsersList from "./component/Admin/UsersList.js";
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 // import Payment from "./component/Cart/Payment.js"
-
-
+ 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
@@ -49,6 +49,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<LoginSignUp />} />
+        <Route exact path="/services" element={<Services />} />
+
         <Route exact path="/services/:id" element={<ServiceDetails />} />
 
         <Route exact path='/me/update' element={<ProtectedRoute component={UpdateProfile} />} />
