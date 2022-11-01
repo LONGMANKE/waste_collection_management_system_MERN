@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-    shippingInfo: {
+    locationInfo: {
         address: {
             type: String,
             required: true,
@@ -47,9 +47,9 @@ const orderSchema = new mongoose.Schema({
                 type: String,
                 required: true,
             },
-            product: {
+            service: {
                 type: mongoose.Schema.ObjectId,
-                ref: "Product",
+                ref: "Service",
                 required: true,
             },
         },
@@ -83,7 +83,7 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: 0,
     },
-    shippingPrice: {
+    collectionPrice: {
         type: Number,
         required: true,
         default: 0,

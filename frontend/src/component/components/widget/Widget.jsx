@@ -1,14 +1,36 @@
 import "./widget.scss"
-import React from "react"
+import {React, useEffect} from "react"
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { useSelector, useDispatch } from "react-redux";
+import { getAdminService } from "../../../actions/serviceAction";
+import { getAllOrders } from "../../../actions/orderActions";
+import { getAllUsers } from "../../../actions/userAction.js";
+import { Link } from "react-router-dom";
 
 
 
 const Widget = ({type}) => {
+
+  const dispatch = useDispatch();
+
+  const { services } = useSelector((state) => state.services);
+
+  const { orders } = useSelector((state) => state.AllOrders);
+
+  const { users } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    dispatch(getAdminService());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+
+
   let data;
 
   //temporary 
@@ -21,6 +43,7 @@ const Widget = ({type}) => {
     data = {
       title:"USERS",
       isMoney: false,
+      counter:  users && users.length,
       link:"See all users",
       icon: <PersonOutlineIcon className="icon" 
       style={{
@@ -34,6 +57,7 @@ const Widget = ({type}) => {
         title:"ORDERS",
         isMoney: false,
         link:"View all orders",
+        counter:  orders && orders.length,
         icon: <AddShoppingCartIcon className="icon"
         style={{
           color:"orange", 
@@ -43,9 +67,9 @@ const Widget = ({type}) => {
       break;
       case "earning":
         data = {
-          title:"EARNINGS",
+          title:"SERVICES",
           isMoney: true,
-          link:"View net earnings",
+          link:<Link to="/">View net earnings"</Link>,
           icon: <MonetizationOnIcon className="icon"
           style={{
             color:"green", 
@@ -77,7 +101,7 @@ const Widget = ({type}) => {
     <div className="widget">
         <div className="left">
           <div className="title">{data.title}</div>
-          <div className="counter">{data.isMoney && "$"} {amount}</div>
+          <div className="counter">{data.isMoney && "$"}{data.counter} </div>
           <div className="link">{data.link}</div>
 
 

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./component/layout/Header/Header.js"
+// import Navbar from "./component/layout/Header/layout1/Sidebar.js"
+
 import Footer from "./component/layout/Footer/Footer.js"
 import WebFont from "webfontloader"
 import React from 'react';
@@ -26,7 +28,13 @@ import UsersList from "./component/Admin/UsersList.js";
 import Shipping from "./component/Cart/Shipping.js";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 // import Payment from "./component/Cart/Payment.js"
- 
+import OrderSuccess from "./component/Cart/OrderSuccess.js";
+import MyOrders from "./component/Order/MyOrders.js";
+import OrderDetails from "./component/Order/OrderDetails.js";
+import ProductList from "./component/Admin/ProductList.js";
+import NewProduct from "./component/Admin/NewProduct.js";
+import updateProduct from "./component/Admin/UpdateProduct.js";
+import OrderList from "./component/Admin/OrderList.js";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
@@ -44,7 +52,7 @@ function App() {
   return (
     //in routing the component doesn't work in latest react use  element instead
     <Router>
-      <Header />
+      <Header/>
       {isAuthenticated && <UserOptions user={user} />}
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -65,10 +73,23 @@ function App() {
         <Route exact path="/shipping" element={<ProtectedRoute component={Shipping} />} />
         <Route exact path="/order/confirm" element={<ProtectedRoute component={ConfirmOrder} />} />
         {/* <Route exact path="/process/payment" element={<ProtectedRoute component={Payment} />} /> */}
+        <Route exact path="/success" element={<ProtectedRoute component={OrderSuccess} />} />
+        <Route exact path="/orders" element={<ProtectedRoute component={MyOrders} />} />
+        <Route exact path="/order/:id" element={<ProtectedRoute component={OrderDetails} />} />
+        <Route exact path="/admin/services" element={<ProtectedRoute component={ProductList} />} />
+        <Route exact path="/admin/service" element={<ProtectedRoute component={NewProduct} />} />
+        <Route exact  path="/admin/service/:id" element={<ProtectedRoute component={updateProduct} />} />
+        <Route exact path="/admin/orders" element={<ProtectedRoute component={OrderList} />} />
 
+
+
+
+
+    
         <Route exact path="/about" element={<About />} />
 
       </Routes>
+
       <Footer />
 
     </Router>

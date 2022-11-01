@@ -8,7 +8,7 @@ import "./CheckoutSteps.css";
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [
     {
-      label: <Typography>Shipping Details</Typography>,
+      label: <Typography>Location Details</Typography>,
       icon: <LocalShippingIcon />,
     },
     {

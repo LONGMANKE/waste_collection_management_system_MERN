@@ -28,7 +28,7 @@ const Payment = ({ history }) => {
   const elements = useElements();
   const payBtn = useRef(null);
 
-  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
+  const { locationInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
 
@@ -37,11 +37,11 @@ const Payment = ({ history }) => {
   };
 
   const order = {
-    shippingInfo,
+    locationInfo,
     orderItems: cartItems,
     itemsPrice: orderInfo.subtotal,
     taxPrice: orderInfo.tax,
-    shippingPrice: orderInfo.shippingCharges,
+    collectionPrice: orderInfo.collectionPrice,
     totalPrice: orderInfo.totalPrice,
   };
 
@@ -73,11 +73,11 @@ const Payment = ({ history }) => {
             name: user.name,
             email: user.email,
             address: {
-              line1: shippingInfo.address,
-              city: shippingInfo.city,
-              state: shippingInfo.state,
-              postal_code: shippingInfo.pinCode,
-              country: shippingInfo.country,
+              line1: locationInfo.address,
+              city: locationInfo.city,
+              state: locationInfo.state,
+              postal_code: locationInfo.pinCode,
+              country: locationInfo.country,
             },
           },
         },

@@ -228,6 +228,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
       folder: "avatars",
       width: 150,
       crop: "scale",
+
     });
 
     newUserData.avatar = {

@@ -7,10 +7,13 @@ import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import LockOpenIcon from "@mui/icons-material//LockOpen";
 import LockIcon from "@mui/icons-material//Lock";
+import { useParams } from "react-router-dom";
+
 
 const ResetPassword = ({ history, match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const token = useParams();
 
   const { error, success, loading } = useSelector(
     (state) => state.forgotPassword
@@ -27,7 +30,7 @@ const ResetPassword = ({ history, match }) => {
     myForm.set("password", password);
     myForm.set("confirmPassword", confirmPassword);
 
-    dispatch(resetPassword(match.params.token, myForm));
+    dispatch(resetPassword(token, myForm));
   };
 
   useEffect(() => {

@@ -4,31 +4,32 @@ import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  getAdminProduct,
-  deleteProduct,
-} from "../../actions/productAction";
-import { Link } from "react-router-dom";
+  getAdminService,
+  deleteService,
+} from "../../actions/serviceAction";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import { DELETE_SERVICE_RESET } from "../../constants/serviceConstants";
 
-const ProductList = ({ history }) => {
+const ProductList = () => {
   const dispatch = useDispatch();
-
+const navigate =useNavigate()
   const alert = useAlert();
+  const {id} = useParams()
 
-  const { error, products } = useSelector((state) => state.products);
+  const { error, services } = useSelector((state) => state.services);
 
   const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.product
+    (state) => state.service
   );
 
-  const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
+  const deleteServiceHandler = (id) => {
+    dispatch(deleteService(id));
   };
 
   useEffect(() => {
@@ -43,17 +44,16 @@ const ProductList = ({ history }) => {
     }
 
     if (isDeleted) {
-      alert.success("Product Deleted Successfully");
-      history.push("/admin/dashboard");
-      dispatch({ type: DELETE_PRODUCT_RESET });
+      alert.success("Service Deleted Successfully");
+      navigate("/admin/dashboard");
+      dispatch({ type: DELETE_SERVICE_RESET });
     }
 
-    dispatch(getAdminProduct());
-  }, [dispatch, , error,alert, deleteError, history, isDeleted]);
-  // }, [dispatch, error, alert])
+    dispatch(getAdminService());
+  }, [dispatch, navigate , error,alert, deleteError, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Service ID", minWidth: 200, flex: 0.5 },
 
     {
       field: "name",
@@ -87,13 +87,13 @@ const ProductList = ({ history }) => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
+            <Link to={`/admin/service/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
 
             <Button
               onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
+                deleteServiceHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
@@ -105,8 +105,8 @@ const ProductList = ({ history }) => {
   ];
 
   const rows = [];
-  products &&
-    products.forEach((item) => {
+  services &&
+  services.forEach((item) => {
       rows.push({
         id: item._id,
         stock: item.Stock,
@@ -117,10 +117,10 @@ const ProductList = ({ history }) => {
 
   return (
     <Fragment>
-      <MetaData title={`ALL PRODUCTS - Admin`} />
+      <MetaData title={`ALL SERVICES - Admin`} />
 
       <div className="dashboard">
-        <SideBar />
+      <div className="Sidebar"> <SideBar/></div> 
         <div className="productListContainer">
           <h1 id="productListHeading">ALL PRODUCTS</h1>
 

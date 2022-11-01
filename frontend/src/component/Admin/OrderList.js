@@ -123,7 +123,7 @@ const OrderList = ({ history }) => {
       <MetaData title={`ALL ORDERS - Admin`} />
 
       <div className="dashboard">
-        <SideBar />
+      <div className="Sidebar"> <SideBar/></div> 
         <div className="productListContainer">
           <h1 id="productListHeading">ALL ORDERS</h1>
 

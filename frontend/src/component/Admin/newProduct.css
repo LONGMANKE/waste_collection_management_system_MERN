@@ -1,3 +1,6 @@
+.Sidebar{      
+  padding-top: 105px;
+        } 
 .newProductContainer {
     width: 100%;
     box-sizing: border-box;
@@ -7,6 +10,7 @@
     flex-direction: column;
     height: 100vh;
   }
+ 
   .newProductContainer h1 {
     color: rgba(0, 0, 0, 0.733);
     font: 300 2rem "Roboto";
@@ -85,7 +89,7 @@
   }
   #createProductBtn {
     border: none;
-    background-color: tomato;
+    background-color: #008710;;
     color: white;
     font: 300 0.9vmax "Roboto";
     width: 100%;

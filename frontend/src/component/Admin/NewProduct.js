@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createProduct } from "../../actions/productAction";
+import { clearErrors, createService } from "../../actions/serviceAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -11,13 +11,15 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SideBar from "./Sidebar";
-import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import { NEW_SERVICE_RESET } from "../../constants/serviceConstants";
+import { useNavigate } from "react-router-dom";
 
-const NewProduct = ({ history }) => {
+const NewProduct = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate = useNavigate()
 
-  const { loading, error, success } = useSelector((state) => state.newProduct);
+  const { loading, error, success } = useSelector((state) => state.newService);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -45,10 +47,10 @@ const NewProduct = ({ history }) => {
 
     if (success) {
       alert.success("Product Created Successfully");
-      history.push("/admin/dashboard");
-      dispatch({ type: NEW_PRODUCT_RESET });
+      navigate("/admin/dashboard");
+      dispatch({ type: NEW_SERVICE_RESET });
     }
-  }, [dispatch, alert, error, history, success]);
+  }, [dispatch, alert,navigate, error, success]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -64,7 +66,7 @@ const NewProduct = ({ history }) => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(createProduct(myForm));
+    dispatch(createService(myForm));
   };
 
   const createProductImagesChange = (e) => {
@@ -91,20 +93,21 @@ const NewProduct = ({ history }) => {
     <Fragment>
       <MetaData title="Create Product" />
       <div className="dashboard">
-        <SideBar />
+      <div className="Sidebar"> <SideBar/></div> 
+
         <div className="newProductContainer">
           <form
             className="createProductForm"
             encType="multipart/form-data"
             onSubmit={createProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Create Service</h1>
 
             <div>
               <SpellcheckIcon />
               <input
                 type="text"
-                placeholder="Product Name"
+                placeholder="Service Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -124,7 +127,7 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Product Description"
+                placeholder="Service Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"

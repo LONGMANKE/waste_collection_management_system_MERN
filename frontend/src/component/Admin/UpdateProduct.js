@@ -2,9 +2,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
-  updateProduct,
-  getProductDetails,
-} from "../../actions/productAction";
+  updateService,
+  getServiceDetails,
+} from "../../actions/serviceAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -14,19 +14,22 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SideBar from "./Sidebar";
-import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import {UPDATE_SERVICE_RESET} from "../../constants/serviceConstants";
+import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateProduct = ({ history, match }) => {
+const UpdateProduct = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate = useNavigate()
+  const {id} = useParams()
 
-  const { error, product } = useSelector((state) => state.productDetails);
+  const { error, service } = useSelector((state) => state.serviceDetails);
 
   const {
     loading,
     error: updateError,
     isUpdated,
-  } = useSelector((state) => state.product);
+  } = useSelector((state) => state.service);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -47,18 +50,18 @@ const UpdateProduct = ({ history, match }) => {
     "SmartPhones",
   ];
 
-  const productId = match.params.id;
+  const serviceId = id;
 
   useEffect(() => {
-    if (product && product._id !== productId) {
-      dispatch(getProductDetails(productId));
+    if (service && service._id !== serviceId) {
+      dispatch(getServiceDetails(serviceId));
     } else {
-      setName(product.name);
-      setDescription(product.description);
-      setPrice(product.price);
-      setCategory(product.category);
-      setStock(product.Stock);
-      setOldImages(product.images);
+      setName(service.name);
+      setDescription(service.description);
+      setPrice(service.price);
+      setCategory(service.category);
+      setStock(service.Stock);
+      setOldImages(service.images);
     }
     if (error) {
       alert.error(error);
@@ -71,18 +74,18 @@ const UpdateProduct = ({ history, match }) => {
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
-      history.push("/admin/products");
-      dispatch({ type: UPDATE_PRODUCT_RESET });
+      alert.success("service Updated Successfully");
+      navigate("/admin/services");
+      dispatch({ type: UPDATE_SERVICE_RESET });
     }
   }, [
     dispatch,
     alert,
+    navigate,
     error,
-    history,
     isUpdated,
-    productId,
-    product,
+    serviceId,
+    service,
     updateError,
   ]);
 
@@ -100,7 +103,7 @@ const UpdateProduct = ({ history, match }) => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(updateProduct(productId, myForm));
+    dispatch(updateService(serviceId, myForm));
   };
 
   const updateProductImagesChange = (e) => {
@@ -126,7 +129,7 @@ const UpdateProduct = ({ history, match }) => {
 
   return (
     <Fragment>
-      <MetaData title="Create Product" />
+      <MetaData title="Create Services" />
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
@@ -135,7 +138,7 @@ const UpdateProduct = ({ history, match }) => {
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Create Service</h1>
 
             <div>
               <SpellcheckIcon />

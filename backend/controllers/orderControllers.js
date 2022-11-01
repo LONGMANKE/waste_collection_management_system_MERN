@@ -9,22 +9,22 @@ const ApiFeatures = require("../utils/apifeatures");
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
 
     const {
-        shippingInfo,
+        locationInfo,
         orderItems,
         paymentInfo,
         itemPrice,
         taxPrice,
-        shippingPrice,
+        collectionPrice,
         totalPrice, } = req.body
 
 
     const order = await Order.create({
-        shippingInfo,
+        locationInfo,
         orderItems,
         paymentInfo,
         itemPrice,
         taxPrice,
-        shippingPrice,
+        collectionPrice,
         totalPrice,
         paidAt: Date.now(),
         user: req.user._id

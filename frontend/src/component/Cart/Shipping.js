@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./Shipping.css";
 import { useSelector, useDispatch } from "react-redux";
-import { saveShippingInfo } from "../../actions/cartActions";
+import { saveLocationInfo } from "../../actions/cartActions";
 import MetaData from "../layout/MetaData";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import HomeIcon from "@mui/icons-material/Home";
@@ -18,24 +18,24 @@ const Shipping = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate()
-  const { shippingInfo } = useSelector((state) => state.cart);
+  const { locationInfo } = useSelector((state) => state.cart);
 
-  const [address, setAddress] = useState(shippingInfo.address);
-  const [city, setCity] = useState(shippingInfo.city); 
-  const [state, setState] = useState(shippingInfo.state);
-  const [country, setCountry] = useState(shippingInfo.country);
-  const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
-  const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+  const [address, setAddress] = useState(locationInfo.address);
+  const [city, setCity] = useState(locationInfo.city); 
+  const [state, setState] = useState(locationInfo.state);
+  const [country, setCountry] = useState(locationInfo.country);
+  const [pinCode, setPinCode] = useState(locationInfo.pinCode);
+  const [phoneNo, setPhoneNo] = useState(locationInfo.phoneNo);
 
-  const shippingSubmit = (e) => {
+  const locationSubmit = (e) => {
     e.preventDefault();
 
-    if (phoneNo.length < 10 || phoneNo.length > 10) {
+    if (phoneNo.length < 10 || phoneNo.length > 10) { 
       alert.error("Phone Number should be 10 digits Long");
       return;
     }
     dispatch(
-      saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
+      saveLocationInfo({ address, city, state, country, pinCode, phoneNo })
     );
     navigate("/order/confirm");
   };
@@ -53,7 +53,7 @@ const Shipping = () => {
           <form
             className="shippingForm"
             encType="multipart/form-data"
-            onSubmit={shippingSubmit}
+            onSubmit={locationSubmit}
           >
             <div>
               <HomeIcon />

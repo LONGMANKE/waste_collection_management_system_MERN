@@ -4,6 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import React from "react"
 import { Link } from "react-router-dom";
@@ -29,10 +30,12 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title"> MAIN</p>
+          <Link to="/admin/dashboard">
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          </Link>
           <Link to="/admin/users">
             <li>
               <PersonIcon className="icon" />
@@ -40,17 +43,25 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">LIST</p>
-          <Link to="/products">
+          <Link to="/admin/services">
             <li>
               <StoreMallDirectoryOutlinedIcon className="icon" />
               <span>Services</span>
             </li>
           </Link>
+          
+          <Link to="/admin/service">
+            <li>
+              <AddBusinessIcon className="icon" />
+              <span>create service</span>
+            </li>
+          </Link>
+           <Link to="/admin/orders">
           <li>
             <DeliveryDiningOutlinedIcon className="icon" />
-            <span>Delivery</span>
+            <span>Collection Orders</span>
           </li>
-
+          </Link>
           <p className="title">USER</p>
           <Link to="/account">
             <li>

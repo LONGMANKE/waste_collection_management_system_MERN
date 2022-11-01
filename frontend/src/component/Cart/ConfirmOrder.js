@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const ConfirmOrder = () => {
 const navigate = useNavigate();
 
-  const { shippingInfo, cartItems } = useSelector((state) => state.cart);
+  const { locationInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
 
   const subtotal = cartItems.reduce(
@@ -18,18 +18,18 @@ const navigate = useNavigate();
     0
   );
 
-  const shippingCharges = subtotal > 1000 ? 0 : 200;
+  const collectionPrice = subtotal > 1000 ? 0 : 20;
 
   const tax = subtotal * 0.18;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalPrice = subtotal + tax + collectionPrice;
 
-  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
+  const address = `${locationInfo.address}, ${locationInfo.city}, ${locationInfo.state}, ${locationInfo.pinCode}, ${locationInfo.country}`;
 
   const proceedToPayment = () => {
     const data = {
       subtotal,
-      shippingCharges,
+      collectionPrice,
       tax,
       totalPrice,
     };
@@ -54,7 +54,7 @@ const navigate = useNavigate();
               </div>
               <div>
                 <p>Phone:</p>
-                <span>{shippingInfo.phoneNo}</span>
+                <span>{locationInfo.phoneNo}</span>
               </div>
               <div>
                 <p>Address:</p>
@@ -91,8 +91,8 @@ const navigate = useNavigate();
                 <span>KSH{subtotal}</span>
               </div>
               <div>
-                <p>Shipping Charges:</p>
-                <span>KSH{shippingCharges}</span>
+                <p>Collection Charges:</p>
+                <span>KSH{collectionPrice}</span>
               </div>
               <div>
                 <p>Tax:</p>

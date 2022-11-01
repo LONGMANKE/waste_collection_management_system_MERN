@@ -74,7 +74,7 @@ const UpdateUser = ({ history, match }) => {
     <Fragment>
       <MetaData title="Update User" />
       <div className="dashboard">
-        <SideBar />
+      <div className="Sidebar"> <SideBar/></div> 
         <div className="newProductContainer">
           {loading ? (
             <Loader />
