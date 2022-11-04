@@ -80,7 +80,8 @@ userSchema.methods.getResetPasswordToken = function () {
   .createHash("sha256")
   .update(resetToken)
   .digest("hex")
-  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  this.resetPasswordExpire = Date.now() + 1000000 * 60 * 1000;
+  // resetPasswordExpire: { $gt: Date.now() },
   return (resetToken)
 
    //In the execute node js online

@@ -131,12 +131,12 @@ export const updateService = (id, serviceData) => async (dispatch) => {
   }
 };
 
-// Delete Product
+// Delete service
 export const deleteService = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_SERVICE_REQUEST });
 
-    const { data } = await axios.delete(`/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(`/api/v1/admin/service/${id}`);
 
     dispatch({
       type: DELETE_SERVICE_SUCCESS,
@@ -150,7 +150,7 @@ export const deleteService = (id) => async (dispatch) => {
   }
 };
 
-// Get Products Details
+// Get services Details
 export const getServiceDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: SERVICE_DETAILS_REQUEST });
@@ -192,7 +192,7 @@ export const newReview = (reviewData) => async (dispatch) => {
   }
 };
 
-// Get All Reviews of a Product
+// Get All Reviews of a service
 export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
@@ -211,13 +211,13 @@ export const getAllReviews = (id) => async (dispatch) => {
   }
 };
 
-// Delete Review of a Product
-export const deleteReviews = (reviewId, productId) => async (dispatch) => {
+// Delete Review of a service
+export const deleteReviews = (reviewId, serviceId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(
-      `/api/v1/reviews?id=${reviewId}&productId=${productId}`
+      `/api/v1/reviews?id=${reviewId}&serviceId=${serviceId}`
     );
 
     dispatch({

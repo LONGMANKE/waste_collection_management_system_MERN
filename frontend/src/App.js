@@ -36,7 +36,7 @@ import NewProduct from "./component/Admin/NewProduct.js";
 import updateProduct from "./component/Admin/UpdateProduct.js";
 import OrderList from "./component/Admin/OrderList.js";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js"; 
+import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
 function App() {
@@ -64,7 +64,7 @@ function App() {
   return (
     //in routing the component doesn't work in latest react use  element instead
     <Router>
-      <Header/>
+      <Header />
       {isAuthenticated && <UserOptions user={user} />}
       {/* {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
@@ -72,33 +72,37 @@ function App() {
         </Elements>  )}
        */}
       <Routes>
-      <Route path = "/process/payment" element={ stripeApiKey && 
-          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} exact/>
+        <Route path="/process/payment" element={stripeApiKey &&
+          <Elements stripe={loadStripe(stripeApiKey)}> <Payment /> </Elements>} exact />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route exact path="/services" element={<Services />} />
-
         <Route exact path="/services/:id" element={<ServiceDetails />} />
-
         <Route exact path='/me/update' element={<ProtectedRoute component={UpdateProfile} />} />
         <Route exact path='/account' element={<ProtectedRoute component={Profile} />} />
-        <Route exact path='/admin/dashboard' element={<ProtectedRoute component={Dashboard} />} />
         <Route exact path="/password/update" element={<ProtectedRoute component={UpdatePassword} />} />
-
         <Route exact path="/password/forgot" element={<ForgotPassword />} />
         <Route exact path="/password/reset/:token" element={<ResetPassword />} />
         <Route exact path="/admin/users" element={<ProtectedRoute component={UsersList} />} />
         <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/shipping" element={<ProtectedRoute component={Shipping} />} />  
+        <Route exact path="/shipping" element={<ProtectedRoute component={Shipping} />} />
         <Route exact path="/order/confirm" element={<ProtectedRoute component={ConfirmOrder} />} />
-        {/* <Route exact path="/process/payment" element={<ProtectedRoute component={Payment} />} /> */}
         <Route exact path="/success" element={<ProtectedRoute component={OrderSuccess} />} />
         <Route exact path="/orders" element={<ProtectedRoute component={MyOrders} />} />
         <Route exact path="/order/:id" element={<ProtectedRoute component={OrderDetails} />} />
-        <Route exact path="/admin/services" element={<ProtectedRoute component={ProductList} />} />
-        <Route exact path="/admin/service" element={<ProtectedRoute component={NewProduct} />} />
-        <Route exact  path="/admin/service/:id" element={<ProtectedRoute component={updateProduct} />} />
-        <Route exact path="/admin/orders" element={<ProtectedRoute component={OrderList} />} />   
+        
+        
+        //admin
+        <Route isAdmin={true} exact path="/admin/dashboard" element={<ProtectedRoute component={Dashboard} />} />
+        <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ProductList} />} />
+        <Route isAdmin={true} exact path="/admin/service" element={<ProtectedRoute component={NewProduct} />} />
+        <Route isAdmin={true} exact path="/admin/service/:id" element={<ProtectedRoute component={updateProduct} />} />
+        <Route isAdmin={true} exact path="/admin/orders" element={<ProtectedRoute component={OrderList} />} />
+
+
+
+
+        {/* <Route exact path="/admin/order/:id" element={<ProtectedRoute component={ProcessOrder} />} />   */}
         <Route exact path="/about" element={<About />} />
       </Routes>
 

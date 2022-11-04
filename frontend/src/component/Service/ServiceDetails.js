@@ -74,7 +74,7 @@ const ProductDetails = () => {
 
     myForm.set("rating", rating);
     myForm.set("comment", comment);
-    myForm.set("productId", id);
+    myForm.set("serviceId", id);
 
     dispatch(newReview(myForm));
 
