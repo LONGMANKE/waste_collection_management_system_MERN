@@ -44,7 +44,7 @@ const Payment = () => {
     orderItems: cartItems,
     itemsPrice: orderInfo.subtotal,
     taxPrice: orderInfo.tax,
-    shippingPrice: orderInfo.shippingCharges,
+    collectionPrice: orderInfo.collectionPrice,
     totalPrice: orderInfo.totalPrice,
   };
 
@@ -139,7 +139,7 @@ const Payment = () => {
 
             <input
               type="submit"
-              value={`Pay - KSH${orderInfo && orderInfo.totalPrice}`}
+              value={`Pay - KES${orderInfo && orderInfo.totalPrice}`}
               ref={payBtn}
               className="paymentFormBtn"
             />

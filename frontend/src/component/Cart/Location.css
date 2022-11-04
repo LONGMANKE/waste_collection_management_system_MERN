@@ -1,4 +1,4 @@
-.shippingContainer {
+.locationContainer {
     width: 100vw;
     max-width: 100%;
     display: flex;
@@ -7,7 +7,7 @@
     flex-direction: column;
   }
   
-  .shippingBox {
+  .locationBox {
     background-color: white;
     width: 25vw;
     height: 90vh;
@@ -15,7 +15,7 @@
     overflow: hidden;
   }
   
-  .shippingHeading {
+  .locationHeading {
     text-align: center;
     color: rgba(0, 0, 0, 0.664);
     font: 400 1.3vmax "Roboto";
@@ -25,7 +25,7 @@
     margin: auto;
   }
   
-  .shippingForm {
+  .locationForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,14 +36,14 @@
     transition: all 0.5s;
   }
   
-  .shippingForm > div {
+  .locationForm > div {
     display: flex;
     width: 100%;
     align-items: center;
   }
   
-  .shippingForm > div > input,
-  .shippingForm > div > select {
+  .locationForm > div > input,
+  .locationForm > div > select {
     padding: 1vmax 4vmax;
     padding-right: 1vmax;
     width: 100%;
@@ -54,14 +54,14 @@
     outline: none;
   }
   
-  .shippingForm > div > svg {
+  .locationForm > div > svg {
     position: absolute;
     transform: translateX(1vmax);
     font-size: 1.6vmax;
     color: rgba(0, 0, 0, 0.623);
   }
   
-  .shippingBtn {
+  .locationBtn {
     border: none;
     background-color: #008710;
     color: white;
@@ -74,37 +74,37 @@
     margin: 2vmax;
   }
   
-  .shippingBtn:hover {
+  .locationBtn:hover {
     background-color: #870000;
   }
   
   @media screen and (max-width: 600px) {
-    .shippingBox {
+    .locationBox {
       width: 100vw;
       height: 95vh;
     }
   
-    .shippingHeading {
+    .locationHeading {
       font: 400 6vw "Roboto";
       padding: 5vw;
     }
   
-    .shippingForm {
+    .locationForm {
       padding: 11vw;
     }
   
-    .shippingForm > div > input,
-    .shippingForm > div > select {
+    .locationForm > div > input,
+    .locationForm > div > select {
       padding: 5vw 10vw;
       font: 300 4vw cursive;
     }
   
-    .shippingForm > div > svg {
+    .locationForm > div > svg {
       font-size: 6vw;
       transform: translateX(3vw);
     }
   
-    .shippingBtn {
+    .locationBtn {
       font: 300 4vw "Roboto";
       padding: 4vw;
     }

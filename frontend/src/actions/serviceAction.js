@@ -33,7 +33,7 @@ import {
 
 // Get All services
 export const getService =
-  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>
+  (keyword = "", currentPage = 1, price = [0, 1000], category, ratings = 0) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_SERVICE_REQUEST });

@@ -122,6 +122,9 @@
     cursor: pointer;
     border-radius: 30px;
   }
+  .checkOutBtn > button:hover {
+    background-color: #870000;
+  }
   
   @media screen and (max-width: 600px) {
     .cartPage {
@@ -174,5 +177,8 @@
       padding: 2vmax 4vmax;
       width: 100%;
       font: 300 2vmax "Roboto";
+    }
+    .checkOutBtn > button:hover {
+      background-color: #870000;
     }
   }

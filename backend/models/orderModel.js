@@ -73,21 +73,13 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    itemsPrice: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
+ 
     taxPrice: {
         type: Number,
         required: true,
         default: 0,
     },
-    collectionPrice: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
+   
     totalPrice: {
         type: Number,
         required: true,

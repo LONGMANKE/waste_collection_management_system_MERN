@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import "./Shipping.css";
+import "./Location.css";
 import { useSelector, useDispatch } from "react-redux";
 import { saveLocationInfo } from "../../actions/cartActions";
 import MetaData from "../layout/MetaData";
@@ -14,7 +14,7 @@ import { useAlert } from "react-alert";
 import CheckoutSteps from "../Cart/CheckoutSteps.js";
 import { useNavigate } from "react-router-dom";
 
-const Shipping = () => {
+const Location = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate()
@@ -42,16 +42,16 @@ const Shipping = () => {
 
   return (
     <Fragment>
-      <MetaData title="Shipping Details" />
+      <MetaData title="location Details" />
 
       <CheckoutSteps activeStep={0} />
 
-      <div className="shippingContainer">
-        <div className="shippingBox">
-          <h2 className="shippingHeading">Shipping Details</h2>
+      <div className="locationContainer">
+        <div className="locationBox">
+          <h2 className="locationHeading">Location Details</h2>
 
           <form
-            className="shippingForm"
+            className="locationForm"
             encType="multipart/form-data"
             onSubmit={locationSubmit}
           >
@@ -141,7 +141,7 @@ const Shipping = () => {
             <input
               type="submit"
               value="Continue"
-              className="shippingBtn"
+              className="locationBtn"
               disabled={state ? false : true}
             />
           </form>
@@ -151,4 +151,4 @@ const Shipping = () => {
   );
 };
 
-export default Shipping;
+export default Location;

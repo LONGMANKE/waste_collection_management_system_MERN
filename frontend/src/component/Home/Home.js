@@ -9,15 +9,6 @@ import Loader from '../layout/Loader/Loader';
 import { useAlert } from 'react-alert';
 
 
-
-
-// const product = {
-//   name: "blue tshirt",
-//   images: [{ url: "https://5.imimg.com/data5/JH/SP/MY-33710583/men-s-blue-shirt-500x500.jpg" }],
-//   price: "1000",
-//   _id: "Simoo"
-// }
-
 const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();

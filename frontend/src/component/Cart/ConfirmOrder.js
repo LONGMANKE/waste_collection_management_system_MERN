@@ -67,14 +67,14 @@ const navigate = useNavigate();
             <div className="confirmCartItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (
-                  <div key={item.product}>
-                    <img src={item.image} alt="Product" />
-                    <Link to={`/product/${item.product}`}>
+                  <div key={item.service}>
+                    <img src={item.image} alt="Service" />
+                    <Link to={`/services/${item.service}`}>
                       {item.name}
                     </Link>{" "}
                     <span>
-                      {item.quantity} X KSH{item.price} ={" "}
-                      <b>KSH{item.price * item.quantity}</b>
+                      {item.quantity} X KES{item.price} ={" "}
+                      <b>KES{item.price * item.quantity}</b>
                     </span>
                   </div>
                 ))}
@@ -88,15 +88,15 @@ const navigate = useNavigate();
             <div>
               <div>
                 <p>Subtotal:</p>
-                <span>KSH{subtotal}</span>
+                <span>KES{subtotal}</span>
               </div>
               <div>
                 <p>Collection Charges:</p>
-                <span>KSH{collectionPrice}</span>
+                <span>KES{collectionPrice}</span>
               </div>
               <div>
                 <p>Tax:</p>
-                <span>KSH{tax}</span>
+                <span>KES{tax}</span>
               </div>
             </div>
 
@@ -104,7 +104,7 @@ const navigate = useNavigate();
               <p>
                 <b>Total:</b>
               </p>
-              <span>KSH{totalPrice}</span>
+              <span>KES{totalPrice}</span>
             </div>
 
             <button onClick={proceedToPayment}>Proceed To Payment</button>

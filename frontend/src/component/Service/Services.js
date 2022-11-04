@@ -14,13 +14,9 @@ import { useParams } from "react-router-dom";
 
 
 const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom", 
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    "Complete",
+    "Moderate",
+    "Normal", 
 ];
 
 const Services = () => {
@@ -30,7 +26,7 @@ const Services = () => {
   const { keyword} = useParams();
 
     const [currentPage, setcurrentPage] = useState(1)
-    const [price, setPrice] = useState([0, 11000]);
+    const [price, setPrice] = useState([0, 1000]);
     const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
     const { loading, services, error,servicesCount,resultPerPage, filteredServicesCount } = useSelector((state) => state.services);
@@ -64,9 +60,9 @@ const Services = () => {
             ) : (
                 <Fragment>
                     <MetaData title="SERVICES -- WASTE" />
-                    <h2 className="productsHeading">SERVICES</h2>
+                    <h2 className="servicesHeading">SERVICES</h2>
 
-                    <div className="products">
+                    <div className="services">
                         {services &&
                             services.map((service) => (
                                 <ServiceCard key={service._id} service={service} />
@@ -82,7 +78,7 @@ const Services = () => {
                             valueLabelDisplay="auto"
                             aria-labelledby="range-slider"
                             min={0}
-                            max={11000}
+                            max={1000}
                         />
 
                         <Typography>Categories</Typography>

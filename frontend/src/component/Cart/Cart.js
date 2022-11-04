@@ -34,7 +34,7 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/shipping");
+    navigate("/location");
   };
 
   return (
@@ -79,7 +79,7 @@ const Cart = () => {
                       +
                     </button>
                   </div>
-                  <p className="cartSubtotal">{`KSH${
+                  <p className="cartSubtotal">{`KES${
                     item.price * item.quantity
                   }`}</p>
                 </div>
@@ -89,7 +89,7 @@ const Cart = () => {
               <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
-                <p>{`KSH${cartItems.reduce(
+                <p>{`KES${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price,
                   0
                 )}`}</p>
