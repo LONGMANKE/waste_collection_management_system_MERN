@@ -7,7 +7,7 @@ import {
   getAdminService,
   deleteService,
 } from "../../actions/serviceAction";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -20,7 +20,6 @@ const ProductList = () => {
   const dispatch = useDispatch();
 const navigate =useNavigate()
   const alert = useAlert();
-  const {id} = useParams()
 
   const { error, services } = useSelector((state) => state.services);
 
@@ -72,7 +71,7 @@ const navigate =useNavigate()
     {
       field: "price",
       headerName: "Price",
-      type: "number",
+      type: "number", 
       minWidth: 270,
       flex: 0.5,
     },
@@ -122,7 +121,7 @@ const navigate =useNavigate()
       <div className="dashboard">
       <div className="Sidebar"> <SideBar/></div> 
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
+          <h1 id="productListHeading">ALL SERVICES</h1>
 
           <DataGrid
             rows={rows}

@@ -18,8 +18,9 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import EventIcon from '@mui/icons-material/Event';
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { createOrder, clearErrors } from "../../actions/orderActions.js";
+import { useNavigate } from "react-router-dom";
 
-const Payment = ({ history }) => {
+const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ const Payment = ({ history }) => {
   const stripe = useStripe();
   const elements = useElements();
   const payBtn = useRef(null);
+  const navigate = useNavigate()
+
 
   const { locationInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
@@ -41,7 +44,7 @@ const Payment = ({ history }) => {
     orderItems: cartItems,
     itemsPrice: orderInfo.subtotal,
     taxPrice: orderInfo.tax,
-    collectionPrice: orderInfo.collectionPrice,
+    shippingPrice: orderInfo.shippingCharges,
     totalPrice: orderInfo.totalPrice,
   };
 
@@ -62,9 +65,11 @@ const Payment = ({ history }) => {
         config
       );
 
-      const client_secret = data.client_secret;
+      
 
-      if (!stripe || !elements) return;
+   
+    const client_secret = data.client_secret;
+    if (!stripe || !elements) return;
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
@@ -93,10 +98,8 @@ const Payment = ({ history }) => {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
-
           dispatch(createOrder(order));
-
-          history.push("/success");
+          navigate("/success");
         } else {
           alert.error("There's some issue while processing payment ");
         }

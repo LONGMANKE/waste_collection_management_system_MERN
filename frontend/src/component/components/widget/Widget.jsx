@@ -1,10 +1,11 @@
 import "./widget.scss"
-import {React, useEffect} from "react"
+import { React, useEffect } from "react"
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+// import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminService } from "../../../actions/serviceAction";
 import { getAllOrders } from "../../../actions/orderActions";
@@ -13,7 +14,7 @@ import { Link } from "react-router-dom";
 
 
 
-const Widget = ({type}) => {
+const Widget = ({ type }) => {
 
   const dispatch = useDispatch();
 
@@ -33,62 +34,70 @@ const Widget = ({type}) => {
 
   let data;
 
-  //temporary 
-  const amount = 100;
-  const diff = 20;
+  
 
 
-  switch(type){
+  switch (type) {
     case "user":
-    data = {
-      title:"USERS",
-      isMoney: false,
-      counter:  users && users.length,
-      link:"See all users",
-      icon: <PersonOutlineIcon className="icon" 
-      style={{
-        color:"crimson", 
-        backgroundColor:"rgba(255, 0, 0, 0.2)",
-      }}/>
-    };
-    break;
-    case "order":
       data = {
-        title:"ORDERS",
+        title: "USERS",
         isMoney: false,
-        link:"View all orders",
-        counter:  orders && orders.length,
-        icon: <AddShoppingCartIcon className="icon"
-        style={{
-          color:"orange", 
-          backgroundColor:"rgba(0, 128, 0, 0.2)",
-        }}/>,
+        counter: users && users.length,
+        link: <Link to="/admin/users"  style={{
+          color:"#008710"}}>See all Users</Link>,
+        diff: users && users.length,
+        icon: <PersonOutlineIcon className="icon"
+          style={{
+            color: "crimson",
+            backgroundColor: "rgba(255, 0, 0, 0.2)",
+          }} />
       };
       break;
-      case "earning":
-        data = {
-          title:"SERVICES",
-          isMoney: true,
-          link:<Link to="/">View net earnings"</Link>,
-          icon: <MonetizationOnIcon className="icon"
+    case "orders":
+      data = {
+        title: "ORDERS",
+        isMoney: false,
+        link: <Link to="/admin/orders"  style={{
+          color:"#008710"}}>View all Orders</Link>,
+        counter: orders && orders.length,
+        diff: orders && orders.length,
+        icon: <AddShoppingCartIcon className="icon"
           style={{
-            color:"green", 
-            backgroundColor:"rgba(0, 128, 0, 0.2)",
-          }}/>,
-        };
-        break;
-        case "balance":
-        data = {
-          title:"BALANCE",
-          isMoney: true,
-          link:"See details",
-          icon: <AccountBalanceWalletIcon className="icon"
+            color: "orange",
+            backgroundColor: "rgba(0, 128, 0, 0.2)",
+          }} />,
+      };
+      break;
+    case "services":
+      data = {
+        title: "SERVICES",
+        isMoney: false,
+        counter: services && services.length,
+        diff: services && services.length,
+        link: <Link to="/admin/services" style={{
+          color:"#008710"}}
+          >View all Services</Link>,
+        icon: <StoreMallDirectoryOutlinedIcon className="icon"
           style={{
-            color:"purple", 
-            backgroundColor:"rgba(128, 0, 128, 0.2)",
-          }}/>,
-        };
-        break;
+            color: "green",
+            backgroundColor: "rgba(0, 128, 0, 0.2)",
+          }} />,
+      };
+      break;
+    case "balance":
+      data = {
+        title: "BALANCE",
+        isMoney: true,
+        link: <Link to="/admin/transactions" style={{
+          color:"#008710"}}
+          >See Transactions</Link>,
+        icon: <AccountBalanceWalletIcon className="icon"
+          style={{
+            color: "purple",
+            backgroundColor: "rgba(128, 0, 128, 0.2)",
+          }} />,
+      };
+      break;
 
     default:
       break;
@@ -99,21 +108,21 @@ const Widget = ({type}) => {
 
   return (
     <div className="widget">
-        <div className="left">
-          <div className="title">{data.title}</div>
-          <div className="counter">{data.isMoney && "$"}{data.counter} </div>
-          <div className="link">{data.link}</div>
+      <div className="left">
+        <div className="title">{data.title}</div>
+        <div className="counter">{data.isMoney && "KSH"}{data.counter} </div>
+        <div className="link">{data.link}</div>
 
 
+      </div>
+      <div className="right">
+        <div className="percentage positive">
+          <KeyboardArrowUpIcon />
+          {data.diff}
         </div>
-        <div className="right">
-          <div className="percentage positive">
-           <KeyboardArrowUpIcon/>
-            {diff}%
-          </div> 
-          {data.icon}
-           
-        </div>
+        {data.icon}
+
+      </div>
     </div>
   )
 }

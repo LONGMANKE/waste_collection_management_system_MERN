@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar"
 import Widget from "../components/widget/Widget"
-import List from "../components/table/Table"
+import List from "../components/table/ServiceTable"
 import "./dashboard.scss"
 import React from "react"
 
@@ -12,13 +12,13 @@ const Dashboard = () => {
        <div className="homeContainer"> 
      <div className="widgets">
       <Widget type="user"/>
-      <Widget type="order"/>
-      <Widget type="earning"/>
+      <Widget type="orders"/>
+      <Widget type="services"/>
       <Widget type="balance"/>
       </div>
       <div className="gg"></div>
       <div className="listContainer">
-        <div className="listTitle">Latest transaction</div>
+        <div className="listTitle">Services Preview</div>
         <List/>
       </div>
       </div>
