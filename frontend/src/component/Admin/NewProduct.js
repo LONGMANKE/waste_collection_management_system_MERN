@@ -30,14 +30,10 @@ const NewProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
-  ];
+    "Complete",
+    "Moderate",
+    "Normal", 
+];
 
   useEffect(() => {
     if (error) {

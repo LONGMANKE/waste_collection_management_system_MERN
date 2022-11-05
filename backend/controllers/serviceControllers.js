@@ -6,48 +6,49 @@ const { findById } = require("../models/serviceModel");
 const cloudinary = require("cloudinary");
 
 // create A Service --Admin
-exports.createService = catchAsyncErrors(async (req, res, next) => {
-    req.body.user = req.user.id;
-    const service = await Service.create(req.body);
-    res.status(201).json({
-        success: true,
-        service,
-
-    })
-});
-// Create Service -- Admin
 // exports.createService = catchAsyncErrors(async (req, res, next) => {
-//     let images = [];
-  
-//     if (typeof req.body.images === "string") {
-//       images.push(req.body.images);
-//     } else {
-//       images = req.body.images;
-//     }
-  
-//     const imagesLinks = [];
-  
-//     for (let i = 0; i < images.length; i++) {
-//       const result = await cloudinary.v2.uploader.upload(images[i], {
-//         folder: "services",
-//       });
-  
-//       imagesLinks.push({
-//         public_id: result.public_id,
-//         url: result.secure_url,
-//       });
-//     }
-  
-//     req.body.images = imagesLinks;
 //     req.body.user = req.user.id;
-  
 //     const service = await Service.create(req.body);
-  
 //     res.status(201).json({
-//       success: true,
-//       service,
-//     });
-//   });
+//         success: true,
+//         service,
+
+//     })
+// });
+// Create Service -- Admin
+exports.createService = catchAsyncErrors(async (req, res, next) => {
+    let images = [];
+  
+    if (typeof req.body.images === "string") {
+      images.push(req.body.images);
+    } else {
+      images = req.body.images;
+    }
+  
+    const imagesLinks = [];
+  
+    for (let i = 0; i < images.length; i++) {
+      const myCloud = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "services",
+      });
+  
+      imagesLinks.push({
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+      });
+    }
+// SERVICE VALIDATION FAILED: IMAGES.URL: PATH `IMAGES.URL` IS REQUIRED., IMAGES.PUBLIC_ID: PATH `IMAGES.PUBLIC_ID` IS REQUIRED.
+  
+    req.body.images = imagesLinks;
+    req.body.user = req.user.id;
+  
+    const service = await Service.create(req.body);
+  
+    res.status(201).json({
+      success: true,
+      service,
+    });
+  });
 
 // Get All Service
 exports.getAllServices = catchAsyncErrors(async (req, res, next) => {

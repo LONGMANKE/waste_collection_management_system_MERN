@@ -40,7 +40,7 @@ import {
   USER_DETAILS_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
-export const userReducer = (state = { products: [] }, action) => {
+export const userReducer = (state = { services: [] }, action) => {
 
 
   switch (action.type) {
