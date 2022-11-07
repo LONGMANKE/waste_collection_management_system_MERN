@@ -36,7 +36,9 @@ const Payment = () => {
   const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
-    amount: Math.round(orderInfo.totalPrice * 100),
+    amount: Math.round(orderInfo.totalPrice * 100),        
+    email: user.email,  
+
   };
 
   const order = {

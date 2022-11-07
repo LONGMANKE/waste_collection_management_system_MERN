@@ -29,8 +29,7 @@ const List = () => {
       rows.push({
         id: item._id,
         stock: item.Stock,
-        img: item.images[0].public_id,
-        img:item.price,
+        img: item.images[0].url,
         price: item.price,
         name: item.name,
         method: "Cash on Delivery",
