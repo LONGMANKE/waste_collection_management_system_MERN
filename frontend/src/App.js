@@ -31,13 +31,13 @@ import Payment from "./component/Cart/Payment.js"
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
 import MyOrders from "./component/Order/MyOrders.js";
 import OrderDetails from "./component/Order/OrderDetails.js";
-import ProductList from "./component/Admin/ProductList.js";
-import NewProduct from "./component/Admin/NewProduct.js";
-import updateProduct from "./component/Admin/UpdateProduct.js";
+import ServiceList from "./component/Admin/ServiceList.js";
+import NewService from "./component/Admin/NewService.js";
+import updateService from "./component/Admin/UpdateService.js";
 import OrderList from "./component/Admin/OrderList.js";
 import ProcessOrder from "./component/Admin/ProcessOrder.js";
 import UpdateUser from "./component/Admin/UpdateUser.js";
-import ProductReviews from "./component/Admin/ProductReviews.js";
+import ServiceReviews from "./component/Admin/ServiceReviews.js";
 // import Contact from "./component/layout/Contact/Contact.js";
 import NotFound from "./component/layout/Not Found/NotFound.js";
 
@@ -104,13 +104,13 @@ function App() {
         {/* admin */}
         <Route isAdmin={true} exact path="/admin/dashboard" element={<ProtectedRoute component={Dashboard} />} />
         <Route isAdmin={true} exact path="/admin/users" element={<ProtectedRoute component={UsersList} />} />
-        <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ProductList} />} />
-        <Route isAdmin={true} exact path="/admin/service" element={<ProtectedRoute component={NewProduct} />} />
-        <Route isAdmin={true} exact path="/admin/service/:id" element={<ProtectedRoute component={updateProduct} />} />
+        <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ServiceList} />} />
+        <Route isAdmin={true} exact path="/admin/service" element={<ProtectedRoute component={NewService} />} />
+        <Route isAdmin={true} exact path="/admin/service/:id" element={<ProtectedRoute component={updateService} />} />
         <Route isAdmin={true} exact path="/admin/orders" element={<ProtectedRoute component={OrderList} />} />
         <Route isAdmin={true} exact path="/admin/order/:id" element={<ProtectedRoute component={ProcessOrder} />} />
         <Route isAdmin={true} exact path="/admin/user/:id" element={<ProtectedRoute component={UpdateUser} />} />
-        <Route isAdmin={true} exact path="/admin/reviews" element={<ProtectedRoute component={ProductReviews} />} />
+        <Route isAdmin={true} exact path="/admin/reviews" element={<ProtectedRoute component={ServiceReviews} />} />
         <Route
           component={
             window.location.pathname === "/process/payment" ? null : NotFound

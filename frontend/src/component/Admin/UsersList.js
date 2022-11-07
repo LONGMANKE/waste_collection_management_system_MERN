@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import "./productList.css";
+import "./ServiceList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate} from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -123,15 +123,15 @@ const UsersList = () => {
 
       <div className="dashboard">
       <div className="Sidebar"> <SideBar/></div> 
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL USERS</h1>
+        <div className="ServiceListContainer">
+          <h1 id="ServiceListHeading">ALL USERS</h1>
 
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
-            className="productListTable"
+            className="ServiceListTable"
             autoHeight
           />
         </div>

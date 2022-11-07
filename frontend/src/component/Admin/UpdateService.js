@@ -1,7 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createService } from "../../actions/serviceAction";
+import {
+  clearErrors,
+  updateService,
+  getServiceDetails,
+} from "../../actions/serviceAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -11,15 +14,22 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import SideBar from "./Sidebar";
-import { NEW_SERVICE_RESET } from "../../constants/serviceConstants";
-import { useNavigate } from "react-router-dom";
+import {UPDATE_SERVICE_RESET} from "../../constants/serviceConstants";
+import { useNavigate, useParams } from "react-router-dom";
 
-const NewProduct = () => {
+const UpdateService = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate()
+  const {id} = useParams()
 
-  const { loading, error, success } = useSelector((state) => state.newService);
+  const { error, service } = useSelector((state) => state.serviceDetails);
+
+  const {
+    loading,
+    error: updateError,
+    isUpdated,
+  } = useSelector((state) => state.service);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -27,6 +37,7 @@ const NewProduct = () => {
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
+  const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
@@ -35,20 +46,46 @@ const NewProduct = () => {
     "Normal", 
 ];
 
+  const serviceId = id;
+
   useEffect(() => {
+    if (service && service._id !== serviceId) {
+      dispatch(getServiceDetails(serviceId));
+    } else {
+      setName(service.name);
+      setDescription(service.description);
+      setPrice(service.price);
+      setCategory(service.category);
+      setStock(service.Stock);
+      setOldImages(service.images);
+    }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
-    if (success) {
-      alert.success("Service Created Successfully");
-      navigate("/admin/dashboard");
-      dispatch({ type: NEW_SERVICE_RESET });
+    if (updateError) {
+      alert.error(updateError);
+      dispatch(clearErrors());
     }
-  }, [dispatch, alert,navigate, error, success]);
 
-  const createServiceSubmitHandler = (e) => {
+    if (isUpdated) {
+      alert.success("service Updated Successfully");
+      navigate("/admin/services");
+      dispatch({ type: UPDATE_SERVICE_RESET });
+    }
+  }, [
+    dispatch,
+    alert,
+    navigate,
+    error,
+    isUpdated,
+    serviceId,
+    service,
+    updateError,
+  ]);
+
+  const updateServiceSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -62,14 +99,15 @@ const NewProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(createService(myForm));
+    dispatch(updateService(serviceId, myForm));
   };
 
-  const createServiceImagesChange = (e) => {
+  const updateServiceImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
     setImages([]);
     setImagesPreview([]);
+    setOldImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
@@ -87,15 +125,15 @@ const NewProduct = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Product" />
+      <MetaData title="Create Services" />
       <div className="dashboard">
       <div className="Sidebar"> <SideBar/></div> 
 
-        <div className="newProductContainer">
+        <div className="newServiceContainer">
           <form
-            className="createProductForm"
+            className="createServiceForm"
             encType="multipart/form-data"
-            onSubmit={createServiceSubmitHandler}
+            onSubmit={updateServiceSubmitHandler}
           >
             <h1>Create Service</h1>
 
@@ -116,6 +154,7 @@ const NewProduct = () => {
                 placeholder="Price"
                 required
                 onChange={(e) => setPrice(e.target.value)}
+                value={price}
               />
             </div>
 
@@ -133,7 +172,10 @@ const NewProduct = () => {
 
             <div>
               <AccountTreeIcon />
-              <select onChange={(e) => setCategory(e.target.value)}>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
                 <option value="">Choose Category</option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
@@ -150,27 +192,35 @@ const NewProduct = () => {
                 placeholder="Stock"
                 required
                 onChange={(e) => setStock(e.target.value)}
+                value={Stock}
               />
             </div>
 
-            <div id="createProductFormFile">
+            <div id="createServiceFormFile">
               <input
                 type="file"
                 name="avatar"
                 accept="image/*"
-                onChange={createServiceImagesChange}
+                onChange={updateServiceImagesChange}
                 multiple
               />
             </div>
 
-            <div id="createProductFormImage">
+            <div id="createServiceFormImage">
+              {oldImages &&
+                oldImages.map((image, index) => (
+                  <img key={index} src={image.url} alt="Old Service Preview" />
+                ))}
+            </div>
+
+            <div id="createServiceFormImage">
               {imagesPreview.map((image, index) => (
                 <img key={index} src={image} alt="Service Preview" />
               ))}
             </div>
 
             <Button
-              id="createProductBtn"
+              id="createServiceBtn"
               type="submit"
               disabled={loading ? true : false}
             >
@@ -183,4 +233,4 @@ const NewProduct = () => {
   );
 };
 
-export default NewProduct;
+export default UpdateService;

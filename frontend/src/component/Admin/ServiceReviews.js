@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import "./productReviews.css";
+import "./ServiceReviews.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
@@ -12,13 +12,14 @@ import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Star from "@mui/icons-material/Star";
+import { useNavigate } from "react-router-dom";
 
 import SideBar from "./Sidebar";
 import { DELETE_REVIEW_RESET } from "../../constants/serviceConstants";
 
-const ProductReviews = ({ history }) => {
+const ServiceReviews = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   const alert = useAlert();
 
   const { error: deleteError, isDeleted } = useSelector(
@@ -26,23 +27,23 @@ const ProductReviews = ({ history }) => {
   );
 
   const { error, reviews, loading } = useSelector(
-    (state) => state.productReviews
+    (state) => state.serviceReviews
   );
 
-  const [productId, setProductId] = useState("");
+  const [serviceId, setServiceId] = useState("");
 
   const deleteReviewHandler = (reviewId) => {
-    dispatch(deleteReviews(reviewId, productId));
+    dispatch(deleteReviews(reviewId, serviceId));
   };
 
-  const productReviewsSubmitHandler = (e) => {
+  const serviceReviewsSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(getAllReviews(productId));
+    dispatch(getAllReviews(serviceId));
   };
 
   useEffect(() => {
-    if (productId.length === 24) {
-      dispatch(getAllReviews(productId));
+    if (serviceId.length === 24) {
+      dispatch(getAllReviews(serviceId));
     }
     if (error) {
       alert.error(error);
@@ -56,10 +57,10 @@ const ProductReviews = ({ history }) => {
 
     if (isDeleted) {
       alert.success("Review Deleted Successfully");
-      history.push("/admin/reviews");
+      navigate("/admin/reviews");
       dispatch({ type: DELETE_REVIEW_RESET });
     }
-  }, [dispatch, alert, error, deleteError, history, isDeleted, productId]);
+  }, [dispatch, alert, error, deleteError, navigate, isDeleted, serviceId]);
 
   const columns = [
     { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
@@ -132,30 +133,31 @@ const ProductReviews = ({ history }) => {
       <MetaData title={`ALL REVIEWS - Admin`} />
 
       <div className="dashboard">
-        <SideBar />
-        <div className="productReviewsContainer">
+      <div className="Sidebar"> <SideBar/></div> 
+
+        <div className="ServiceReviewsContainer">
           <form
-            className="productReviewsForm"
-            onSubmit={productReviewsSubmitHandler}
+            className="ServiceReviewsForm"
+            onSubmit={serviceReviewsSubmitHandler}
           >
-            <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
+            <h1 className="ServiceReviewsFormHeading">ALL REVIEWS</h1>
 
             <div>
               <Star />
               <input
                 type="text"
-                placeholder="Product Id"
+                placeholder="Service Id"
                 required
-                value={productId}
-                onChange={(e) => setProductId(e.target.value)}
+                value={serviceId}
+                onChange={(e) => setServiceId(e.target.value)}
               />
             </div>
 
             <Button
-              id="createProductBtn"
+              id="createServiceBtn"
               type="submit"
               disabled={
-                loading ? true : false || productId === "" ? true : false
+                loading ? true : false || serviceId === "" ? true : false
               }
             >
               Search
@@ -168,11 +170,11 @@ const ProductReviews = ({ history }) => {
               columns={columns}
               pageSize={10}
               disableSelectionOnClick
-              className="productListTable"
+              className="ServiceListTable"
               autoHeight
             />
           ) : (
-            <h1 className="productReviewsFormHeading">No Reviews Found</h1>
+            <h1 className="ServiceReviewsFormHeading">No Reviews Found</h1>
           )}
         </div>
       </div>
@@ -180,4 +182,4 @@ const ProductReviews = ({ history }) => {
   );
 };
 
-export default ProductReviews;
+export default ServiceReviews;

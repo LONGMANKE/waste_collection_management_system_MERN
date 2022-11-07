@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import "./productList.css"; 
+import "./ServiceList.css"; 
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
@@ -16,7 +16,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
 import { DELETE_SERVICE_RESET } from "../../constants/serviceConstants";
 
-const ProductList = () => {
+const ServiceList = () => {
   const dispatch = useDispatch();
 const navigate =useNavigate()
   const alert = useAlert();
@@ -120,15 +120,15 @@ const navigate =useNavigate()
 
       <div className="dashboard">
       <div className="Sidebar"> <SideBar/></div> 
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL SERVICES</h1>
+        <div className="ServiceListContainer">
+          <h1 id="ServiceListHeading">ALL SERVICES</h1>
 
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
-            className="productListTable"
+            className="ServiceListTable"
             autoHeight
           />
         </div>
@@ -137,4 +137,4 @@ const navigate =useNavigate()
   );
 };
 
-export default ProductList;
+export default ServiceList;

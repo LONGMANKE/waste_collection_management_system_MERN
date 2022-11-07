@@ -63,7 +63,7 @@ const ProcessOrder = () => {
       <MetaData title="Process Order" />
       <div className="dashboard">
       <div className="Sidebar"> <SideBar/></div> 
-        <div className="newProductContainer">
+        <div className="newServiceContainer">
           {loading ? (
             <Loader />
           ) : (
@@ -74,7 +74,7 @@ const ProcessOrder = () => {
               }}
             >
               <div>
-                <div className="confirmshippingArea">
+                <div className="confirmlocationArea">
                   <Typography>Customer Info</Typography>
                   <div className="orderDetailsContainerBox">
                     <div>
@@ -141,7 +141,7 @@ const ProcessOrder = () => {
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item.service}>
-                          <img src={item.image} alt="Product" />
+                          <img src={item.image} alt="Service" />
                           <Link to={`/service/${item.service}`}>
                             {item.name}
                           </Link>{" "}
@@ -181,7 +181,7 @@ const ProcessOrder = () => {
                   </div>
 
                   <Button
-                    id="createProductBtn"
+                    id="createServiceBtn"
                     type="submit"
                     disabled={
                       loading ? true : false || status === "" ? true : false
