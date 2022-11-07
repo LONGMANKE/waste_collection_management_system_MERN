@@ -109,12 +109,12 @@ const ProductDetails = () => {
             <MetaData title={`${service.name} -- COLLECTION`} />
           <div className='ProductDetails'>
             <div>
-              {service.images && [service.images].map((item, i) => (
+              {service.images && [service.images[0]].map((item, i) => (
                 <img
                   className="CarouselImage"
-                  key={item.url}
+                  key={i}
                   src={item.url}
-                  alt={`${i} Slide`}
+                  alt={`${i} Slide`} 
                 />)
 
               )

@@ -42,13 +42,13 @@ const NewProduct = () => {
     }
 
     if (success) {
-      alert.success("Product Created Successfully");
+      alert.success("Service Created Successfully");
       navigate("/admin/dashboard");
       dispatch({ type: NEW_SERVICE_RESET });
     }
   }, [dispatch, alert,navigate, error, success]);
 
-  const createProductSubmitHandler = (e) => {
+  const createServiceSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -65,7 +65,7 @@ const NewProduct = () => {
     dispatch(createService(myForm));
   };
 
-  const createProductImagesChange = (e) => {
+  const createServiceImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
     setImages([]);
@@ -95,7 +95,7 @@ const NewProduct = () => {
           <form
             className="createProductForm"
             encType="multipart/form-data"
-            onSubmit={createProductSubmitHandler}
+            onSubmit={createServiceSubmitHandler}
           >
             <h1>Create Service</h1>
 
@@ -158,14 +158,14 @@ const NewProduct = () => {
                 type="file"
                 name="avatar"
                 accept="image/*"
-                onChange={createProductImagesChange}
+                onChange={createServiceImagesChange}
                 multiple
               />
             </div>
 
             <div id="createProductFormImage">
               {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
+                <img key={index} src={image} alt="Service Preview" />
               ))}
             </div>
 

@@ -4,7 +4,7 @@ const serviceSchema = mongoose.Schema({
 
     name: {
         type: String,
-        required: [true, "Please enter product name"],
+        required: [true, "Please enter service name"],
         trim: true
     },
     description: {
@@ -20,24 +20,26 @@ const serviceSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    images: {
-        public_id: {
-            type: String,
-            required: true
+    images:[
+        {
+            public_id: {
+                type: String,
+                required: true
+            },
+            url: {
+                type: String,
+                required: true
+            },
         },
-        url: {
-            type: String,
-            required: true
-        },
-    },
+    ],
     category: {
         type: String,
-        required: [true, "Please enter product category"]
+        required: [true, "Please enter service category"]
     },
     Stock: {
         type: Number,
-        require: [true, "Please enter product stock"],
-        maxLength: [4, "Stock cannot exceed 4 characters"],
+        require: [true, "Please enter service stock"],
+        maxLength: [4, "Stock cannot exceed 3 characters"],
         default: 1
     },
     numOfReviews: {
