@@ -62,7 +62,7 @@ const ProcessOrder = () => {
     <Fragment>
       <MetaData title="Process Order" />
       <div className="dashboard">
-        <SideBar />
+      <div className="Sidebar"> <SideBar/></div> 
         <div className="newProductContainer">
           {loading ? (
             <Loader />
@@ -70,12 +70,12 @@ const ProcessOrder = () => {
             <div
               className="confirmOrderPage"
               style={{
-                display: order.orderStatus === "Delivered" ? "block" : "grid",
+                display: order.orderStatus === "Collected" ? "block" : "grid",
               }}
             >
               <div>
                 <div className="confirmshippingArea">
-                  <Typography>Shipping Info</Typography>
+                  <Typography>Customer Info</Typography>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p>Name:</p>
@@ -125,7 +125,7 @@ const ProcessOrder = () => {
                     <div>
                       <p
                         className={
-                          order.orderStatus && order.orderStatus === "Delivered"
+                          order.orderStatus && order.orderStatus === "Collected"
                             ? "greenColor"
                             : "redColor"
                         }
@@ -157,7 +157,7 @@ const ProcessOrder = () => {
               {/*  */}
               <div
                 style={{
-                  display: order.orderStatus === "Delivered" ? "none" : "block",
+                  display: order.orderStatus === "Collected" ? "none" : "block",
                 }}
               >
                 <form
@@ -171,11 +171,11 @@ const ProcessOrder = () => {
                     <select onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Choose Category</option>
                       {order.orderStatus === "Processing" && (
-                        <option value="Shipped">Shipped</option>
+                        <option value="Underway">Underway</option>
                       )}
 
-                      {order.orderStatus === "Shipped" && (
-                        <option value="Delivered">Delivered</option>
+                      {order.orderStatus === "Underway" && (
+                        <option value="Collected">Collected</option>
                       )}
                     </select>
                   </div>

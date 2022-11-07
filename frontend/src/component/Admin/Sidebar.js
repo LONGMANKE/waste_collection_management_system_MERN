@@ -70,6 +70,12 @@ const Sidebar = () => {
             <span>Collection Orders</span>
           </li>
           </Link>
+          <Link to="/admin/service">
+            <li>
+              <AddBusinessIcon className="icon" />
+              <span>Create Service</span>
+            </li>
+          </Link>
           <p className="title">USER</p>
           <Link to="/account">
             <li>

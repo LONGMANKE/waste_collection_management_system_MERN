@@ -131,7 +131,8 @@ const UpdateProduct = () => {
     <Fragment>
       <MetaData title="Create Services" />
       <div className="dashboard">
-        <SideBar />
+      <div className="Sidebar"> <SideBar/></div> 
+
         <div className="newProductContainer">
           <form
             className="createProductForm"

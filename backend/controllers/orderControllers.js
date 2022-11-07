@@ -34,7 +34,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
         order,
     })
 })
-
+ 
 
 //get single order
 exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
@@ -87,19 +87,19 @@ exports.UpdateOrder = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Order not found with this Id", 404));
     }
 
-    if (order.orderStatus === "Delivered") {
-        return next(new ErrorHandler("You have already delivered this order", 400))
+    if (order.orderStatus === "Collected") {
+        return next(new ErrorHandler("You have already collected this order", 400))
     }
 
-    if (req.body.status === "Shipped") {
+    if (req.body.status === "Underway") {
         order.orderItems.forEach(async (o) => {
           await updateStock(o.service, o.quantity);
         });
       }
     order.orderStatus = req.body.status;
 
-    if (order.orderStatus === "Delivered") {
-        order.deliveredAt = Date.now()
+    if (order.orderStatus === "Collected") {
+        order.collectedAt = Date.now()
     }
 
     await order.save({ ValidateBeforeSave: false })
@@ -109,7 +109,7 @@ exports.UpdateOrder = catchAsyncErrors(async (req, res, next) => {
 })
 //created to sort the await function error
 async function updateStock(id, quantity) {
-    const service = await service.findById(id)
+    const service = await Service.findById(id)
     service.Stock -= quantity
     await service.save({ ValidateBeforeSave: false })
 }
