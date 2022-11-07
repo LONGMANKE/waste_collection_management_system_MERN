@@ -30,6 +30,13 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title"> MAIN</p>
+          <Link to="/">
+            <li>
+              <AddBusinessIcon className="icon" />
+              <span>Home</span>
+            </li>
+          </Link>
+          
           <Link to="/admin/dashboard">
           <li>
             <DashboardIcon className="icon" />
@@ -50,12 +57,13 @@ const Sidebar = () => {
             </li>
           </Link>
           
-          <Link to="/admin/service">
+          <Link to="/admin/reviews">
             <li>
               <AddBusinessIcon className="icon" />
-              <span>create service</span>
+              <span>reviews</span>
             </li>
           </Link>
+         
            <Link to="/admin/orders">
           <li>
             <DeliveryDiningOutlinedIcon className="icon" />

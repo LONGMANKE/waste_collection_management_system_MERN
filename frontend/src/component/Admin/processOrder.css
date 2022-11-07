@@ -2,11 +2,13 @@
     margin: 5vmax 0;
     padding: 3vmax;
     background-color: white;
+    display: flex;
   }
   
   .updateOrderForm > div {
     display: flex;
     width: 100%;
+    flex-direction: ;
     align-items: center;
   }
   .updateOrderForm > div > select {

@@ -30,7 +30,11 @@ const Widget = ({ type }) => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
 
   let data;
 
@@ -88,6 +92,8 @@ const Widget = ({ type }) => {
       data = {
         title: "BALANCE",
         isMoney: true,
+        counter: totalAmount,
+        diff: totalAmount,
         link: <Link to="/admin/transactions" style={{
           color:"#008710"}}
           >See Transactions</Link>,
@@ -110,7 +116,7 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <div className="title">{data.title}</div>
-        <div className="counter">{data.isMoney && "KSH"}{data.counter} </div>
+        <div className="counter">{data.isMoney && ""}{data.counter} </div>
         <div className="link">{data.link}</div>
 
 

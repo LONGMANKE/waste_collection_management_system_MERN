@@ -15,8 +15,12 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import "./processOrder.css";
+import { useParams } from "react-router-dom";
 
-const ProcessOrder = ({ history, match }) => {
+const ProcessOrder = () => {
+    const {id} = useParams()
+    // const navigate = useNavigate()
+
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
@@ -27,7 +31,8 @@ const ProcessOrder = ({ history, match }) => {
 
     myForm.set("status", status);
 
-    dispatch(updateOrder(match.params.id, myForm));
+    
+    dispatch(updateOrder(id, myForm));
   };
 
   const dispatch = useDispatch();
@@ -48,9 +53,10 @@ const ProcessOrder = ({ history, match }) => {
       alert.success("Order Updated Successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
+  
+    dispatch(getOrderDetails(id));
+  }, [dispatch, alert, error, id, isUpdated, updateError]);
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
 
   return (
     <Fragment>
@@ -78,14 +84,14 @@ const ProcessOrder = ({ history, match }) => {
                     <div>
                       <p>Phone:</p>
                       <span>
-                        {order.shippingInfo && order.shippingInfo.phoneNo}
+                        {order.locationInfo && order.locationInfo.phoneNo}
                       </span>
                     </div>
                     <div>
                       <p>Address:</p>
                       <span>
-                        {order.shippingInfo &&
-                          `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
+                        {order.locationInfo &&
+                          `${order.locationInfo.address}, ${order.locationInfo.city}, ${order.locationInfo.state}, ${order.locationInfo.pinCode}, ${order.locationInfo.country}`}
                       </span>
                     </div>
                   </div>
@@ -134,9 +140,9 @@ const ProcessOrder = ({ history, match }) => {
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
                       order.orderItems.map((item) => (
-                        <div key={item.product}>
+                        <div key={item.service}>
                           <img src={item.image} alt="Product" />
-                          <Link to={`/product/${item.product}`}>
+                          <Link to={`/service/${item.service}`}>
                             {item.name}
                           </Link>{" "}
                           <span>

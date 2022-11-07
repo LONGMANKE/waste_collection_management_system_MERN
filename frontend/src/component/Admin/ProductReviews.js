@@ -6,7 +6,7 @@ import {
   clearErrors,
   getAllReviews,
   deleteReviews,
-} from "../../actions/productAction";
+} from "../../actions/serviceAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -14,7 +14,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Star from "@mui/icons-material/Star";
 
 import SideBar from "./Sidebar";
-import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
+import { DELETE_REVIEW_RESET } from "../../constants/serviceConstants";
 
 const ProductReviews = ({ history }) => {
   const dispatch = useDispatch();

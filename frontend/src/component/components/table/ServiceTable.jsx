@@ -46,7 +46,7 @@ const List = () => {
       <TableRow>
       <TableCell className="tableCell">Service ID</TableCell>
             <TableCell className="tableCell">Service Preview</TableCell>
-            <TableCell className="tableCell">Service Name</TableCell>
+            {/* <TableCell className="tableCell">Service Name</TableCell> */}
             <TableCell className="tableCell">Charges</TableCell>
             <TableCell className="tableCell">Payment Method</TableCell>
             <TableCell className="tableCell">Available Services</TableCell>
@@ -63,7 +63,7 @@ const List = () => {
             {row.name}
   </div>
           </TableCell>
-          <TableCell className="tableCell">{row.name}</TableCell>
+          {/* <TableCell className="tableCell">{row.name}</TableCell> */}
           <TableCell className="tableCell">{row.price}</TableCell>
           <TableCell className="tableCell">{row.method}</TableCell>
           <TableCell className="tableCell">{row.stock}</TableCell>

@@ -18,7 +18,7 @@ import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
 const OrderList = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const alert = useAlert();
 
