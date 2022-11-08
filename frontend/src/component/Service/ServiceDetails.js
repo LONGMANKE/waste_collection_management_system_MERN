@@ -21,7 +21,7 @@ import {
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/serviceConstants";
 
-const ProductDetails = () => {
+const ServiceDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -107,7 +107,7 @@ const ProductDetails = () => {
       ) : (
         <Fragment>
             <MetaData title={`${service.name} -- COLLECTION`} />
-          <div className='ProductDetails'>
+          <div className='ServiceDetails'>
             <div>
               {service.images && [service.images[0]].map((item, i) => (
                 <img
@@ -124,7 +124,7 @@ const ProductDetails = () => {
             <div>
               <div className="detailsBlock-1">
                 <h2>{service.name}</h2>
-                <p>Product # {service._id}</p>
+                <p>Service # {service._id}</p>
               </div>
               <div className="detailsBlock-2">
                 <ReactStars {...options} />
@@ -148,7 +148,7 @@ const ProductDetails = () => {
                 <p>
                   Status:
                   <b className={service.Stock < 1 ? "redColor" : "greenColor"}>
-                    {service.Stock < 1 ? "OutOfStock" : "InStock"}
+                    {service.Stock < 1 ? "UnAvailable" : "Available"}
                   </b>
                 </p>
               </div>
@@ -211,7 +211,7 @@ const ProductDetails = () => {
 }
 
 
-export default ProductDetails
+export default ServiceDetails
 
 // import {
 //   Dialog,
@@ -221,14 +221,14 @@ export default ProductDetails
 //   Button,
 // } from "@material-ui/core";
 // import { Rating } from "@material-ui/lab";
-// import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+// import { NEW_REVIEW_RESET } from "../../constants/ServiceConstants";
 
-// const ProductDetails = ({ match }) => {
+// const ServiceDetails = ({ match }) => {
 //   const dispatch = useDispatch();
 //   const alert = useAlert();
 
-//   const { product, loading, error } = useSelector(
-//     (state) => state.productDetails
+//   const { Service, loading, error } = useSelector(
+//     (state) => state.ServiceDetails
 //   );
 
 //   const { success, error: reviewError } = useSelector(
@@ -237,7 +237,7 @@ export default ProductDetails
 
 //   const options = {
 //     size: "large",
-//     value: product.ratings,
+//     value: Service.ratings,
 //     readOnly: true,
 //     precision: 0.5,
 //   };
@@ -248,7 +248,7 @@ export default ProductDetails
 //   const [comment, setComment] = useState("");
 
 //   const increaseQuantity = () => {
-//     if (product.Stock <= quantity) return;
+//     if (Service.Stock <= quantity) return;
 
 //     const qty = quantity + 1;
 //     setQuantity(qty);
@@ -275,7 +275,7 @@ export default ProductDetails
 
 //     myForm.set("rating", rating);
 //     myForm.set("comment", comment);
-//     myForm.set("productId", match.params.id);
+//     myForm.set("ServiceId", match.params.id);
 
 //     dispatch(newReview(myForm));
 
@@ -297,7 +297,7 @@ export default ProductDetails
 //       alert.success("Review Submitted Successfully");
 //       dispatch({ type: NEW_REVIEW_RESET });
 //     }
-//     dispatch(getProductDetails(match.params.id));
+//     dispatch(getServiceDetails(match.params.id));
 //   }, [dispatch, match.params.id, error, alert, reviewError, success]);
 
 //   return (
@@ -306,12 +306,12 @@ export default ProductDetails
 //         <Loader />
 //       ) : (
 //         <Fragment>
-//           <MetaData title={`${product.name} -- ECOMMERCE`} />
-//           <div className="ProductDetails">
+//           <MetaData title={`${Service.name} -- ECOMMERCE`} />
+//           <div className="ServiceDetails">
 //             <div>
 //               <Carousel>
-//                 {product.images &&
-//                   product.images.map((item, i) => (
+//                 {Service.images &&
+//                   Service.images.map((item, i) => (
 //                     <img
 //                       className="CarouselImage"
 //                       key={i}
@@ -324,18 +324,18 @@ export default ProductDetails
 
 //             <div>
 //               <div className="detailsBlock-1">
-//                 <h2>{product.name}</h2>
-//                 <p>Product # {product._id}</p>
+//                 <h2>{Service.name}</h2>
+//                 <p>Service # {Service._id}</p>
 //               </div>
 //               <div className="detailsBlock-2">
 //                 <Rating {...options} />
 //                 <span className="detailsBlock-2-span">
 //                   {" "}
-//                   ({product.numOfReviews} Reviews)
+//                   ({Service.numOfReviews} Reviews)
 //                 </span>
 //               </div>
 //               <div className="detailsBlock-3">
-//                 <h1>{`₹${product.price}`}</h1>
+//                 <h1>{`₹${Service.price}`}</h1>
 //                 <div className="detailsBlock-3-1">
 //                   <div className="detailsBlock-3-1-1">
 //                     <button onClick={decreaseQuantity}>-</button>
@@ -343,7 +343,7 @@ export default ProductDetails
 //                     <button onClick={increaseQuantity}>+</button>
 //                   </div>
 //                   <button
-//                     disabled={product.Stock < 1 ? true : false}
+//                     disabled={Service.Stock < 1 ? true : false}
 //                     onClick={addToCartHandler}
 //                   >
 //                     Add to Cart
@@ -352,14 +352,14 @@ export default ProductDetails
 
 //                 <p>
 //                   Status:
-//                   <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-//                     {product.Stock < 1 ? "OutOfStock" : "InStock"}
+//                   <b className={Service.Stock < 1 ? "redColor" : "greenColor"}>
+//                     {Service.Stock < 1 ? "OutOfStock" : "InStock"}
 //                   </b>
 //                 </p>
 //               </div>
 
 //               <div className="detailsBlock-4">
-//                 Description : <p>{product.description}</p>
+//                 Description : <p>{Service.description}</p>
 //               </div>
 
 //               <button onClick={submitReviewToggle} className="submitReview">
@@ -401,10 +401,10 @@ export default ProductDetails
 //             </DialogActions>
 //           </Dialog>
 
-//           {product.reviews && product.reviews[0] ? (
+//           {Service.reviews && Service.reviews[0] ? (
 //             <div className="reviews">
-//               {product.reviews &&
-//                 product.reviews.map((review) => (
+//               {Service.reviews &&
+//                 Service.reviews.map((review) => (
 //                   <ReviewCard key={review._id} review={review} />
 //                 ))}
 //             </div>
@@ -417,4 +417,4 @@ export default ProductDetails
 //   );
 // };
 
-// export default ProductDetails;
+// export default ServiceDetails;

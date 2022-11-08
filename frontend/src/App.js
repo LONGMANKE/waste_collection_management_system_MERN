@@ -38,8 +38,9 @@ import OrderList from "./component/Admin/OrderList.js";
 import ProcessOrder from "./component/Admin/ProcessOrder.js";
 import UpdateUser from "./component/Admin/UpdateUser.js";
 import ServiceReviews from "./component/Admin/ServiceReviews.js";
-// import Contact from "./component/layout/Contact/Contact.js";
+import Contact from "./component/layout/Contact/Contact.js";
 import NotFound from "./component/layout/Not Found/NotFound.js";
+import Search from "./component/Service/Search";
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -82,7 +83,11 @@ function App() {
           
         <Route exact path="/" element={<Home />} />
         <Route exact path="/services" element={<Services />} />
-        <Route exact path="/services/:id" element={<ServiceDetails />} />
+        <Route exact path="/services/:keyword" element={<Services />} />
+        <Route exact path="/service/:id" element={<ServiceDetails />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/search" element={<Search />} />
+        <Route exact path="/contact" element={<Contact />} />
  
         {/* auth */}
         <Route exact path="/login" element={<LoginSignUp />} />
@@ -114,14 +119,11 @@ function App() {
         <Route
           component={
             window.location.pathname === "/process/payment" ? null : NotFound
-          }
-        />
+          } 
+                 />
+        
+        
 
-
-
-
-        {/* <Route exact path="/admin/order/:id" element={<ProtectedRoute component={ProcessOrder} />} />   */}
-        <Route exact path="/about" element={<About />} />
       </Routes>
 
 
