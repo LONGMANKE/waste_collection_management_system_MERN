@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./component/layout/Header/Header.js"
-// import Navbar from "./component/layout/Header/layout1/Sidebar.js"
-
 import Footer from "./component/layout/Footer/Footer.js"
 import WebFont from "webfontloader"
 import React from 'react';
 import store from "./Store"
 import { loadUser } from './actions/userAction';
 import ProtectedRoute from './component/Route/ProtectedRoute';
+import ProtectedRoute2 from './component/Route/ProtectedRoute2';
 import Home from './component/Home/Home'
 import LoginSignUp from './component/User/LoginSignUp.jsx';
 import Profile from './component/User/Profile';
@@ -35,7 +34,9 @@ import ServiceList from "./component/Admin/ServiceList.js";
 import NewService from "./component/Admin/NewService.js";
 import updateService from "./component/Admin/UpdateService.js";
 import OrderList from "./component/Admin/OrderList.js";
+import OrderList1 from "./component/Collector/OrderList1";
 import ProcessOrder from "./component/Admin/ProcessOrder.js";
+import ProcessOrder1 from "./component/Collector/ProcessOrder1";
 import UpdateUser from "./component/Admin/UpdateUser.js";
 import ServiceReviews from "./component/Admin/ServiceReviews.js";
 import Contact from "./component/layout/Contact/Contact.js";
@@ -116,11 +117,15 @@ function App() {
         <Route isAdmin={true} exact path="/admin/order/:id" element={<ProtectedRoute component={ProcessOrder} />} />
         <Route isAdmin={true} exact path="/admin/user/:id" element={<ProtectedRoute component={UpdateUser} />} />
         <Route isAdmin={true} exact path="/admin/reviews" element={<ProtectedRoute component={ServiceReviews} />} />
+
+        {/*collector*/}
+        <Route isAdmin={true} exact path="/collector/orders" element={<ProtectedRoute2 component={OrderList1} />} />
+        <Route isAdmin={true} exact path="/collector/order/:id" element={<ProtectedRoute2 component={ProcessOrder1} />} />
+
+
         <Route
-          component={
-            window.location.pathname === "/process/payment" ? null : NotFound
-          } 
-                 />
+          component={window.location.pathname === "/process/payment" ? null : NotFound } />
+          <Route path="*" element={<NotFound />} />
         
         
 

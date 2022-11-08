@@ -44,7 +44,7 @@ const Header = () => {
   return <ReactNavbar
     {...options}
     profileIcon="true"
-    ProfileIconElement={AccountCircleIcon }
+    ProfileIconElement={AccountCircleIcon}
     searchIcon="true"
     SearchIconElement={SearchIcon}
     cartIcon="true"

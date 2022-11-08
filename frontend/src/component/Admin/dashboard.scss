@@ -10,11 +10,13 @@
     .Sidebar{
       
         padding-top: 105px;
+        padding-bottom: 0px;
+
           
         }  
 
 .homeContainer{
- 
+   
 //   flex: 7; 
 
     width: 100%;
@@ -31,7 +33,15 @@
       display: flex;
       padding: 20px;
   }
-
+  .ServiceListHeading {
+    font: 400 2rem "Roboto";
+    padding: 0.5vmax;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.637);
+    transition: all 0.5s;
+    margin: 2rem;
+    text-align: center;
+  }
   .listContainer{
       -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0, 0.47);
       box-shadow: 2px 4px 10px 1px rgba(201,201,201, 0.47);
@@ -48,16 +58,12 @@
   @media screen and (max-width: 600px) {
       .home{
           flex-direction:column; 
-          .Sidebar{
-              width: 0vmax;
-              height: 0vmax;
-              display: none;
-          }    
+           
       }
-      .homeContainer{
+      .homeContainer{ 
  
           flex: 6; 
-          padding-top: 55px;
+          padding-top: 0px;
       
           .widgets{
               display: flex;

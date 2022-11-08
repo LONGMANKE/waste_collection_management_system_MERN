@@ -2,11 +2,7 @@
   display: flex;
   
 }
-.Sidebar{
-      
-  padding-top: 105px;
-    
-  }   
+ 
 .ServiceListContainer {
   width: 100%;
   box-sizing: border-box;
@@ -46,6 +42,7 @@
 
 .ServiceListTable a:hover {
   color: #008710;
+  
 }
 
 .ServiceListTable button:hover {

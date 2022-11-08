@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { allUsersReducer, forgotPasswordReducer, profileReducer, userDetailsReducer, userReducer, } from "./reducers/userReducer";
 import { newServiceReducer, newReviewReducer, serviceDetailsReducer, serviceReducer, serviceReviewsReducer, servicesReducer, reviewReducer } from "./reducers/serviceReducer";
 import { cartReducer } from "./reducers/cartReducer";
-import { myOrdersReducer, newOrderReducer, orderDetailsReducer, allOrdersReducer, orderReducer} from "./reducers/orderReducer";
+import { myOrdersReducer, newOrderReducer, orderDetailsReducer, allOrdersReducer, orderReducer, allOrdersReducerCollector} from "./reducers/orderReducer";
 const reducer = combineReducers({
   user: userReducer,
   forgotPassword: forgotPasswordReducer,
@@ -20,6 +20,7 @@ const reducer = combineReducers({
   myOrders: myOrdersReducer,
   orderDetails: orderDetailsReducer,
   AllOrders:  allOrdersReducer,
+  AllOrders1:allOrdersReducerCollector,
   order: orderReducer,
   newService: newServiceReducer,
   serviceReviews: serviceReviewsReducer,

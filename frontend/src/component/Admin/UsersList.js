@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState} from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./ServiceList.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,9 @@ import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SideBar from "./Sidebar"
+import Sidebar from "./Sidebar"
+import "./dashboard.scss"
+import "./animation.css"
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
@@ -117,12 +119,15 @@ const UsersList = () => {
       });
     });
 
+  const [navVisible, showNavbar] = useState(false);
+    
+
   return (
     <Fragment>
       <MetaData title={`ALL USERS - Admin`} />
 
       <div className="dashboard">
-      <div className="Sidebar"> <SideBar/></div> 
+      <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div>
         <div className="ServiceListContainer">
           <h1 id="ServiceListHeading">ALL USERS</h1>
 

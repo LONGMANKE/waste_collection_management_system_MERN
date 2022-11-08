@@ -13,7 +13,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import SideBar from "./Sidebar";
+// import SideBar from "./Sidebar";
 import {UPDATE_SERVICE_RESET} from "../../constants/serviceConstants";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -127,7 +127,7 @@ const UpdateService = () => {
     <Fragment>
       <MetaData title="Create Services" />
       <div className="dashboard">
-      <div className="Sidebar"> <SideBar/></div> 
+      {/* <div className="Sidebar"> <SideBar/></div>  */}
 
         <div className="newServiceContainer">
           <form

@@ -46,6 +46,17 @@ const UserOptions = ({ user }) => {
             func: dashboard,
         });
     }
+    if (user.role === "collector") {
+        options.unshift({
+            icon: <DashboardIcon />,
+            name: "Process Orders",
+            func: collector,
+        });
+    }
+    function collector() {
+        navigate("/collector/orders");
+    }
+
     function dashboard() {
         navigate("/admin/dashboard");
     }

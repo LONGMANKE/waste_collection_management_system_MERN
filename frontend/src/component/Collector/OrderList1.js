@@ -1,34 +1,26 @@
-import React, { Fragment, useEffect, useState} from "react";
+import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./ServiceList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Sidebar from "./Sidebar";
+// import SideBar from "./Sidebar";
 import {
-  deleteOrder,
-  getAllOrders,
+  getAllOrderscollector,
   clearErrors,
 } from "../../actions/orderActions";
-import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrderList = () => {
+const OrderList1 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [navVisible, showNavbar] = useState(false);
+
   const alert = useAlert();
 
-  const { error, orders } = useSelector((state) => state.AllOrders);
+  const { error, orders } = useSelector((state) => state.AllOrders1);
 
-  const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 
-  const deleteOrderHandler = (id) => {
-    dispatch(deleteOrder(id));
-  };
 
   useEffect(() => {
     if (error) {
@@ -36,19 +28,10 @@ const OrderList = () => {
       dispatch(clearErrors());
     }
 
-    if (deleteError) {
-      alert.error(deleteError);
-      dispatch(clearErrors());
-    }
 
-    if (isDeleted) {
-      alert.success("Order Deleted Successfully");
-      navigate("/admin/orders");
-      dispatch({ type: DELETE_ORDER_RESET });
-    }
+    dispatch(getAllOrderscollector());
+  }, [dispatch, alert, error, navigate]);
 
-    dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -59,7 +42,7 @@ const OrderList = () => {
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
+        return params.getValue(params.id, "status") === "Collected"
           ? "greenColor"
           : "redColor";
       },
@@ -90,17 +73,9 @@ const OrderList = () => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
+            <Link to={`/collector/order/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
-
-            <Button
-              onClick={() =>
-                deleteOrderHandler(params.getValue(params.id, "id"))
-              }
-            >
-              <DeleteIcon />
-            </Button>
           </Fragment>
         );
       },
@@ -124,7 +99,7 @@ const OrderList = () => {
       <MetaData title={`ALL ORDERS - Admin`} />
 
       <div className="dashboard">
-      <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div>
+      {/* <div className="Sidebar"> <SideBar/></div>  */}
         <div className="ServiceListContainer">
           <h1 id="ServiceListHeading">ALL ORDERS</h1>
 
@@ -142,4 +117,4 @@ const OrderList = () => {
   );
 };
 
-export default OrderList;
+export default OrderList1;

@@ -14,13 +14,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Star from "@mui/icons-material/Star";
 import { useNavigate } from "react-router-dom";
 
-import SideBar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import { DELETE_REVIEW_RESET } from "../../constants/serviceConstants";
 
 const ServiceReviews = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const alert = useAlert();
+  const [navVisible, showNavbar] = useState(false);
+
 
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.review
@@ -133,7 +135,8 @@ const ServiceReviews = () => {
       <MetaData title={`ALL REVIEWS - Admin`} />
 
       <div className="dashboard">
-      <div className="Sidebar"> <SideBar/></div> 
+      <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div>
+
 
         <div className="ServiceReviewsContainer">
           <form

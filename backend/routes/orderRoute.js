@@ -10,8 +10,16 @@ router.route("/orders/me").get(isAuthenticatedUser, myOrders)
 router
     .route("/admin/orders")
     .get(isAuthenticatedUser, authorizedRoles("admin"), getAllOrders)
+
 router
     .route("/admin/order/:id")
-    .put(isAuthenticatedUser, authorizedRoles("admin"), UpdateOrder)
     .delete(isAuthenticatedUser, authorizedRoles("admin"), deleteOrder)
+    .put(isAuthenticatedUser, authorizedRoles("admin"), UpdateOrder)
+router
+    .route("/collector/orders")
+    .get(isAuthenticatedUser, authorizedRoles("collector"), getAllOrders)
+router
+    .route("/collector/order/:id")
+    .put(isAuthenticatedUser, authorizedRoles("collector"), UpdateOrder)
+
 module.exports = router; 

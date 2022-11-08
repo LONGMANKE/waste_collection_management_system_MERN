@@ -36,11 +36,6 @@
     .updateOrderForm {
       padding: 5vmax;
     }
-    .Sidebar{
-      
-      height: 47vmax;
-      /* display: none; */
-  }    
   
     .updateOrderForm > div > select {
       padding: 2.5vmax 5vmax;

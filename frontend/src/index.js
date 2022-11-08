@@ -1,6 +1,7 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App';
+
 import { Provider } from "react-redux";
 import store from "./Store.js";
 import { positions, transitions, Provider as AlertProvider } from "react-alert";

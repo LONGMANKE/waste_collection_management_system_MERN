@@ -19,6 +19,9 @@ import {
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
+    ALL_ORDERS_COLLECTOR_FAIL,
+    ALL_ORDERS_COLLECTOR_REQUEST,
+    ALL_ORDERS_COLLECTOR_SUCCESS,
     CLEAR_ERRORS,
   } from "../constants/orderConstants";
   
@@ -176,6 +179,35 @@ import {
         };
   
       case ORDER_DETAILS_FAIL:
+        return {
+          loading: false,
+          error: action.payload,
+        };
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
+  
+      default:
+        return state;
+    }
+  };
+
+  export const allOrdersReducerCollector = (state = { orders: [] }, action) => {
+    switch (action.type) {
+      case ALL_ORDERS_COLLECTOR_REQUEST:
+        return {
+          loading: true,
+        };
+  
+      case ALL_ORDERS_COLLECTOR_SUCCESS:
+        return {
+          loading: false,
+          orders: action.payload,
+        };
+  
+      case ALL_ORDERS_COLLECTOR_FAIL:
         return {
           loading: false,
           error: action.payload,

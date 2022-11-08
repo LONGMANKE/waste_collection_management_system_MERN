@@ -17,6 +17,9 @@ import {
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
+  ALL_ORDERS_COLLECTOR_FAIL,
+    ALL_ORDERS_COLLECTOR_REQUEST,
+    ALL_ORDERS_COLLECTOR_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/orderConstants";
 
@@ -138,4 +141,49 @@ export const getOrderDetails = (id) => async (dispatch) => {
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
+};
+
+
+// Get All Orders (collector)
+export const getAllOrderscollector = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_ORDERS_COLLECTOR_REQUEST });
+
+    const { data } = await axios.get("/api/v1/collector/orders");
+
+    dispatch({
+      type: ALL_ORDERS_COLLECTOR_SUCCESS,
+      payload: data.orders
+    });
+  } catch (error) {
+    dispatch({
+      type: ALL_ORDERS_COLLECTOR_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Update Order
+export const updateOrdercollector = (id, order) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_ORDER_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.put(
+      `/api/v1/collector/order/${id}`,
+      order,
+      config
+    );
+
+    dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_ORDER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
 };

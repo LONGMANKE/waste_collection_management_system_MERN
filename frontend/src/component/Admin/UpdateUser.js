@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PersonIcon from "@mui/icons-material/Person";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import SideBar from "./Sidebar";
+// import SideBar from "./Sidebar";
 import { UPDATE_USER_RESET } from "../../constants/userConstants";
 import {
   getUserDetails,
@@ -78,7 +78,7 @@ const UpdateUser = () => {
     <Fragment>
       <MetaData title="Update User" />
       <div className="dashboard">
-      <div className="Sidebar"> <SideBar/></div> 
+      {/* <div className="Sidebar"> <SideBar/></div>  */}
         <div className="newServiceContainer">
           {loading ? (
             <Loader />
@@ -116,6 +116,7 @@ const UpdateUser = () => {
                   <option value="">Choose Role</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
+                  <option value="collector">Collector</option>
                 </select>
               </div>
 
