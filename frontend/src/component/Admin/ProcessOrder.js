@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
-import SideBar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import {
   getOrderDetails,
   clearErrors,
@@ -20,6 +20,8 @@ import { useParams } from "react-router-dom";
 const ProcessOrder = () => {
     const {id} = useParams()
     // const navigate = useNavigate()
+  const [navVisible, showNavbar] = useState(false);
+
 
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
@@ -62,7 +64,7 @@ const ProcessOrder = () => {
     <Fragment>
       <MetaData title="Process Order" />
       <div className="dashboard">
-      <div className="Sidebar"> <SideBar/></div> 
+      <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div> 
         <div className="newServiceContainer">
           {loading ? (
             <Loader />

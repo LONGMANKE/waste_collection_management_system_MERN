@@ -79,6 +79,22 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
         orders,
     })
 })
+//get all orders --Collector
+exports.getAllOrdersCollector = catchAsyncErrors(async (req, res, next) => {
+    const orders = await Order.find();
+
+    let totalAmount = 0;
+
+    orders.forEach((order) => {
+        totalAmount += order.totalPrice;
+    })
+
+    res.status(200).json({
+        success: true,
+        totalAmount, 
+        orders,
+    })
+})
 
 //Update order status --Admin
 exports.UpdateOrder = catchAsyncErrors(async (req, res, next) => {
