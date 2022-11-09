@@ -12,7 +12,7 @@
   height: 100vh;
 }
 
-#ServiceListHeading {
+.ServiceListHeading {
   font: 400 2rem "Roboto";
   padding: 0.5vmax;
   box-sizing: border-box;
@@ -21,7 +21,16 @@
   margin: 2rem;
   text-align: center;
 }
-
+.btn1{
+  color: #ffffff;
+  background:#870000;
+  margin-bottom: 0.5vmax;
+  width: 10vmax;
+  align-items: center;
+  height: 4vmax;
+  border-radius: 2vmax;
+  margin-left: 1vmax;
+}
 .ServiceListTable {
   background-color: white;
   border: none !important;

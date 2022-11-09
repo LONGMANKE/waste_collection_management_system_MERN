@@ -42,6 +42,7 @@ import ServiceReviews from "./component/Admin/ServiceReviews.js";
 import Contact from "./component/layout/Contact/Contact.js";
 import NotFound from "./component/layout/Not Found/NotFound.js";
 import Search from "./component/Service/Search";
+import ServiceReport from './component/Admin/ReportsGenerator/ServiceReport';
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -111,6 +112,7 @@ function App() {
         <Route isAdmin={true} exact path="/admin/dashboard" element={<ProtectedRoute component={Dashboard} />} />
         <Route isAdmin={true} exact path="/admin/users" element={<ProtectedRoute component={UsersList} />} />
         <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ServiceList} />} />
+        {/* <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ServiceReport} />} /> */}
         <Route isAdmin={true} exact path="/admin/service" element={<ProtectedRoute component={NewService} />} />
         <Route isAdmin={true} exact path="/admin/service/:id" element={<ProtectedRoute component={updateService} />} />
         <Route isAdmin={true} exact path="/admin/orders" element={<ProtectedRoute component={OrderList} />} />

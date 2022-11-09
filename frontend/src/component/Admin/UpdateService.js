@@ -138,7 +138,7 @@ const UpdateService = () => {
             encType="multipart/form-data"
             onSubmit={updateServiceSubmitHandler}
           >
-            <h1>Create Service</h1>
+            <h1>Update Service</h1>
 
             <div>
               <SpellcheckIcon />
