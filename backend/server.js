@@ -10,19 +10,19 @@ process.on("uncaughtException", (err) => {
     console.log(`Error: ${err.message}`);
     console.log(`The server is shutting down due to uncaught Promise rejection`);
 
-    process.exit(1);
+    process.exit(1);  
 }); 
 
 //config
 dotenv.config({ path: "backend/config/config.env" });
-
-//connecting with database
+ 
+//connecting with database 
 connectDatabase();
 
  
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
+    api_key: process.env.CLOUDINARY_API_KEY, 
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 

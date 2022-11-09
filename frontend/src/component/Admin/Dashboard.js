@@ -1,4 +1,3 @@
-// import Sidebar from "./Sidebar"
 import Sidebar from "./Sidebar"
 import React, {useState} from 'react';
 import Widget from "../components/widget/Widget"
