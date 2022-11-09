@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
 	FaAngleRight,
 	FaAngleLeft, 
@@ -9,7 +8,6 @@ import {
 	FaBars
 } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
-import "./Sidebar.css";
 import PersonIcon from '@mui/icons-material/Person';
 import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
@@ -20,7 +18,7 @@ import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";
 
 const ICON_SIZE = 20;
-
+  
 function Sidebar({visible, show}) {
 	const alert = useAlert();
 	const dispatch = useDispatch();

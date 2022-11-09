@@ -14,6 +14,7 @@ import { useAlert } from "react-alert";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
+import "./animation.css"
 import "./processOrder.css";
 import { useParams } from "react-router-dom";
 

@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import "./animation.css"
 import "./newService.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createService } from "../../actions/serviceAction";

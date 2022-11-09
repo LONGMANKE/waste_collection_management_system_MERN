@@ -1,12 +1,13 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState} from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./ServiceList.css";
+import "./animation.css"
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
-// import SideBar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import {
   getAllOrderscollector,
   clearErrors,
@@ -15,6 +16,7 @@ import {
 const OrderList1 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [navVisible, showNavbar] = useState(false);
 
   const alert = useAlert();
 
@@ -35,6 +37,7 @@ const OrderList1 = () => {
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "user", headerName: "User ID", minWidth: 300, flex: 1 },
 
     {
       field: "status",
@@ -91,6 +94,8 @@ const OrderList1 = () => {
         itemsQty: item.orderItems.length,
         amount: item.totalPrice,
         status: item.orderStatus,
+        user: item.user,
+
       });
     });
 
@@ -99,7 +104,7 @@ const OrderList1 = () => {
       <MetaData title={`ALL ORDERS - Admin`} />
 
       <div className="dashboard">
-      {/* <div className="Sidebar"> <SideBar/></div>  */}
+      <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div>
         <div className="ServiceListContainer">
           <h1 id="ServiceListHeading">ALL ORDERS</h1>
 

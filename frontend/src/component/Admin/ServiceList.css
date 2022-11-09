@@ -1,12 +1,7 @@
 .dashboard{
-  display: flex;
-  
+  display: flex;  
 }
-.Sidebar{
-      
-  padding-top: 105px;
-    
-  }   
+  
 .ServiceListContainer {
   width: 100%;
   box-sizing: border-box;
@@ -60,5 +55,6 @@
 @media screen and (max-width: 600px) {
   .ServiceListTable div {
     font: 300 4vw "Roboto";
-  }
+    display: flex;
+     }
 }

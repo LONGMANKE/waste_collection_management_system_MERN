@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState} from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import "./animation.css"
 import "./ServiceList.css"; 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -14,12 +15,14 @@ import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Sidebar from "./Sidebar";
+import "./animation.css"
 import { DELETE_SERVICE_RESET } from "../../constants/serviceConstants";
 
 const ServiceList = () => {
   const dispatch = useDispatch();
 const navigate =useNavigate()
   const alert = useAlert();
+  const [navVisible, showNavbar] = useState(false);
 
   const { error, services } = useSelector((state) => state.services);
 
@@ -114,7 +117,6 @@ const navigate =useNavigate()
       });
     });
 
-  const [navVisible, showNavbar] = useState(false);
 
 
   return (

@@ -13,7 +13,8 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-// import SideBar from "./Sidebar";
+import Sidebar from "./Sidebar";
+import "./animation.css"
 import {UPDATE_SERVICE_RESET} from "../../constants/serviceConstants";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -22,6 +23,8 @@ const UpdateService = () => {
   const alert = useAlert();
   const navigate = useNavigate()
   const {id} = useParams()
+  const [navVisible, showNavbar] = useState(false);
+
 
   const { error, service } = useSelector((state) => state.serviceDetails);
 
@@ -127,7 +130,7 @@ const UpdateService = () => {
     <Fragment>
       <MetaData title="Create Services" />
       <div className="dashboard">
-      {/* <div className="Sidebar"> <SideBar/></div>  */}
+      <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div>
 
         <div className="newServiceContainer">
           <form

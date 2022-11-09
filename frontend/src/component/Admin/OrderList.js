@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState} from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import "./animation.css"
 import "./ServiceList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
