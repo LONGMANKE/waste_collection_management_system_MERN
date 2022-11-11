@@ -13,6 +13,7 @@ import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirecto
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AddIcon from '@mui/icons-material/Add';
+import DownloadIcon from '@mui/icons-material/Download';
 import { logout } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";
@@ -62,26 +63,31 @@ function Sidebar({visible, show}) {
 							<FaThLarge size={ICON_SIZE} />
 							<span>Dashboard</span>
 						</NavLink>
+						<NavLink to="/admin/service" className="nav-link">
+							<AddIcon size={ICON_SIZE} />
+							<span>Create Service</span> 
+						</NavLink>
 						<NavLink to="/admin/users" className="nav-link">
 							<PersonIcon size={ICON_SIZE} />
-							<span>Users </span>
+							<span>All Users </span>
 						</NavLink>
 						<NavLink to="/admin/services" className="nav-link">
 							<StoreMallDirectoryOutlinedIcon size={ICON_SIZE} />
-							<span>Services</span> 
+							<span>All Services</span> 
 						</NavLink>
 						<NavLink to="/admin/orders" className="nav-link">
 							<DeliveryDiningOutlinedIcon size={ICON_SIZE} />
-							<span>Collection Orders</span> 
+							<span>All Orders</span> 
 						</NavLink>
 						<NavLink to="/admin/reviews" className="nav-link">
 							<ReviewsIcon size={ICON_SIZE} />
 							<span>Reviews</span> 
 						</NavLink>
-						<NavLink to="/admin/service" className="nav-link">
-							<AddIcon size={ICON_SIZE} />
-							<span>Create Service</span> 
+						<NavLink to="/admin/reports" className="nav-link">
+							<DownloadIcon size={ICON_SIZE} />
+							<span>Get Reports</span> 
 						</NavLink>
+						
 						
 					</div>
 				</div>

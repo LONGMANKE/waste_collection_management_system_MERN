@@ -61,12 +61,12 @@ nav{
 }
 
 .nav-link:hover{
-	background-color:#fb5656;
-	color: #4e4e4e;
+	background-color:#eddddd;
+	color: #008710;
 }
 .nav-btn:hover{
-	background-color:#fb5656;
-	color: #4e4e4e;
+	background-color:#000000;
+	color: #f90404;
 }
 
 .nav-link span{

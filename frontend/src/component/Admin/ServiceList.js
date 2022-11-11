@@ -17,7 +17,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Sidebar from "./Sidebar";
 import "./animation.css"
 import { DELETE_SERVICE_RESET } from "../../constants/serviceConstants";
-import ServiceReport from "./ReportsGenerator/ServiceReport";
+// import ServiceReport from "./ReportsGenerator/ServiceReport";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 // Date Fns is used to format the dates we receive

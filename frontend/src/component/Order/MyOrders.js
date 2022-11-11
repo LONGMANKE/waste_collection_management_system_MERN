@@ -88,11 +88,13 @@ const MyOrders = () => {
   return (
     <Fragment>
       <MetaData title={`${user.name} - Orders`} />
-
       {loading ? (
         <Loader />
       ) : (
         <div className="myOrdersPage">
+          <h1 id="ServiceListHeading">MY ORDERS</h1>
+
+
           <DataGrid
             rows={rows}
             columns={columns}

@@ -1,5 +1,5 @@
 .myOrdersPage {
-    width: 100vw;
+    width: 100vmax;
     max-width: 100%;
     padding: 0 7vmax;
     box-sizing: border-box;
@@ -11,6 +11,16 @@
     display: flex;
     flex-direction: column;
   }
+
+.ServiceListHeading {
+  font: 400 2rem "Roboto";
+  padding: 0.5vmax;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.637);
+  transition: all 0.5s;
+  margin: 2rem;
+  text-align: center;
+}
   
   #myOrdersHeading {
     text-align: center;

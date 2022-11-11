@@ -42,11 +42,12 @@ import ServiceReviews from "./component/Admin/ServiceReviews.js";
 import Contact from "./component/layout/Contact/Contact.js";
 import NotFound from "./component/layout/Not Found/NotFound.js";
 import Search from "./component/Service/Search";
-import ServiceReport from './component/Admin/ReportsGenerator/ServiceReport';
+// import ServiceReport from './component/Admin/ReportsGenerator/ServiceReport';
 
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js"; 
 import axios from "axios";
+import Reports from './component/Admin/Reports';
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -119,6 +120,8 @@ function App() {
         <Route isAdmin={true} exact path="/admin/order/:id" element={<ProtectedRoute component={ProcessOrder} />} />
         <Route isAdmin={true} exact path="/admin/user/:id" element={<ProtectedRoute component={UpdateUser} />} />
         <Route isAdmin={true} exact path="/admin/reviews" element={<ProtectedRoute component={ServiceReviews} />} />
+        <Route isAdmin={true} exact path="/admin/reports" element={<ProtectedRoute component={Reports} />} />
+
 
         {/*collector*/}
         <Route isAdmin={true} exact path="/collector/orders" element={<ProtectedRoute2 component={OrderList1} />} />

@@ -50,11 +50,11 @@ const Widget = ({ type }) => {
         link: <Link to="/admin/users"  style={{
           color:"#008710"}}>See all Users</Link>,
         diff: users && users.length,
-        icon: <PersonOutlineIcon className="icon"
+        icon: <Link to="/admin/users"><PersonOutlineIcon className="icon"
           style={{
             color: "crimson",
             backgroundColor: "rgba(255, 0, 0, 0.2)",
-          }} />
+          }} /></Link>
       };
       break;
     case "orders":
@@ -65,11 +65,11 @@ const Widget = ({ type }) => {
           color:"#008710"}}>View all Orders</Link>,
         counter: orders && orders.length,
         diff: orders && orders.length,
-        icon: <AddShoppingCartIcon className="icon"
+        icon:<Link to="/admin/orders"> <AddShoppingCartIcon className="icon"
           style={{
             color: "orange",
             backgroundColor: "rgba(0, 128, 0, 0.2)",
-          }} />,
+          }} />,</Link>
       };
       break;
     case "services":
@@ -81,27 +81,27 @@ const Widget = ({ type }) => {
         link: <Link to="/admin/services" style={{
           color:"#008710"}}
           >View all Services</Link>,
-        icon: <StoreMallDirectoryOutlinedIcon className="icon"
+        icon: <Link to="/admin/services"><StoreMallDirectoryOutlinedIcon className="icon"
           style={{
             color: "green",
             backgroundColor: "rgba(0, 128, 0, 0.2)",
-          }} />,
+          }} />,</Link>
       };
       break;
     case "balance":
       data = {
         title: "BALANCE",
         isMoney: true,
-        counter: totalAmount,
-        diff: totalAmount,
-        link: <Link to="/admin/transactions" style={{
+        counter: `${totalAmount}  KES`,
+        diff: `${totalAmount}`,
+        link: <a href="https://dashboard.stripe.com/test/payments?status[0]=successful" style={{
           color:"#008710"}}
-          >See Transactions</Link>,
-        icon: <AccountBalanceWalletIcon className="icon"
+          >See Transactions</a>,
+        icon: <a href="https://dashboard.stripe.com/test/payments?status[0]=successful"> <AccountBalanceWalletIcon className="icon"
           style={{
             color: "purple",
             backgroundColor: "rgba(128, 0, 128, 0.2)",
-          }} />,
+          }} />,</a>
       };
       break;
 
