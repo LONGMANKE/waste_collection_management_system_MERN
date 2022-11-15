@@ -45,7 +45,7 @@ const ReportsCard = ({ type }) => {
 
   let data;
 
-  
+
 
 
   switch (type) {
@@ -54,9 +54,10 @@ const ReportsCard = ({ type }) => {
         title: "USERS REPORT",
         isMoney: false,
         counter: users && users.length,
-        link: <Link onClick={() =>generateReportForallUsers()} style={{
-          color:"#870000"}}
-          >Click to download</Link>,
+        link: <Link onClick={() => generateReportForallUsers()} style={{
+          color: "#870000"
+        }}
+        >Click to download</Link>,
         diff: users && users.length,
         icon: <PersonOutlineIcon className="icon"
           style={{
@@ -69,9 +70,10 @@ const ReportsCard = ({ type }) => {
       data = {
         title: "ORDERS REPORT",
         isMoney: false,
-     link: <Link onClick={() =>generateReportForallOrders()} style={{
-          color:"#870000"}}
-          >Click to download</Link>,
+        link: <Link onClick={() => generateReportForallOrders()} style={{
+          color: "#870000"
+        }}
+        >Click to download</Link>,
         counter: orders && orders.length,
         diff: orders && orders.length,
         icon: <AddShoppingCartIcon className="icon"
@@ -87,10 +89,11 @@ const ReportsCard = ({ type }) => {
         isMoney: false,
         counter: services && services.length,
         diff: services && services.length,
-        link: <Link onClick={() =>generateReportForallServices()} style={{
-          color:"#870000"}}
-          >Click to download</Link>,
-          
+        link: <Link onClick={() => generateReportForallServices()} style={{
+          color: "#870000"
+        }}
+        >Click to download</Link>,
+
         icon: <StoreMallDirectoryOutlinedIcon className="icon"
           style={{
             color: "green",
@@ -105,8 +108,9 @@ const ReportsCard = ({ type }) => {
         counter: totalAmount,
         diff: totalAmount,
         link: <a href="https://dashboard.stripe.com/test/payments?status[0]=successful" style={{
-          color:"#870000"}}
-          >Click to download</a>,
+          color: "#870000"
+        }}
+        >Click to download</a>,
         icon: <AccountBalanceWalletIcon className="icon"
           style={{
             color: "purple",
@@ -119,19 +123,19 @@ const ReportsCard = ({ type }) => {
       break;
   }
 
-  const generateReportForallServices = () =>{
+  const generateReportForallServices = () => {
     const doc = new jsPDF();
-  
-  
+
+
     // define the columns we want and their titles
-    const tableColumn = ["Service ID", "Name", "Available", "Price","Date"];
+    const tableColumn = ["Service ID", "Name", "Available", "Price", "Date"];
     // define an empty array of rows
-    const tableRows = []; 
+    const tableRows = [];
     // for each services pass all its data into an array
-    
+
     // called date-fns to format the date on the ticket
-   
-  
+
+
     // for each ticket pass all its data into an array
     services.forEach(item => {
       const itemData = [
@@ -146,52 +150,52 @@ const ReportsCard = ({ type }) => {
       // push each tickcet's info into a row
       tableRows.push(itemData);
     });
-   
-  
-    doc.autoTable(tableColumn, tableRows, { startY: 20, styles : { halign : 'center'}, headStyles :{fillColor : [0,154,23]} },);
+
+
+    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'center' }, headStyles: { fillColor: [0, 154, 23] } },);
 
     const date = Date().split(" ");
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
-   
+
     // ticket title. and margin-top + margin-left
     doc.text("Services provided by the company", 75, 15);
 
     var offsetY = 13.797777777777778; //var offsetY is for spacing
     var lineHeight = 7.49111111111111; //var lineHeight is for Spacing
-    
+
 
     var img = new Image(); //this mount a variable to img
     img.src = ll //asign the src to the img variable
     doc.addImage(img, 'png', 100, doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY, 20, 20)// use the method doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY to be able to position the image of the signature below the table at a safe distance from it 
-    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5.5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
     doc.text(85, doc.autoTable.previous.finalY + lineHeight * 6 + offsetY, "Admin  Waste  CSM") //more text
 
 
     // we define the name of our PDF file.
     doc.save(`ServicesReport_${dateStr}.pdf`);
-  
-  
-  
-  
-  
+
+
+
+
+
     //
-  
+
   }
 
-  const generateReportForallUsers = () =>{
-      const doc = new jsPDF();
-  
-  
+  const generateReportForallUsers = () => {
+    const doc = new jsPDF();
+
+
     // define the columns we want and their titles
     const tableColumn = ["User ID", "Email", "Role", "Name"];
     // define an empty array of rows
-    const tableRows = []; 
+    const tableRows = [];
     // for each services pass all its data into an array
-    
+
     // called date-fns to format the date on the ticket
-   
-  
+
+
     // for each ticket pass all its data into an array
     users.forEach(item => {
       const itemData = [
@@ -205,13 +209,13 @@ const ReportsCard = ({ type }) => {
       // push each tickcet's info into a row
       tableRows.push(itemData);
     });
-   
-  
-    doc.autoTable(tableColumn, tableRows, { startY: 20, styles : { halign : 'center'}, headStyles :{fillColor : [0,154,23]} },);
+
+
+    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'center' }, headStyles: { fillColor: [0, 154, 23] } },);
     const date = Date().split(" ");
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
-   
+
     // ticket title. and margin-top + margin-left
     doc.text("Authorised users in the system", 75, 15);
 
@@ -221,32 +225,32 @@ const ReportsCard = ({ type }) => {
     var img = new Image(); //this mount a variable to img
     img.src = ll //asign the src to the img variable
     doc.addImage(img, 'png', 100, doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY, 20, 20)// use the method doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY to be able to position the image of the signature below the table at a safe distance from it 
-    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5.5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
     doc.text(85, doc.autoTable.previous.finalY + lineHeight * 6 + offsetY, "Admin  Waste  CSM") //more text
 
 
     // we define the name of our PDF file.
     doc.save(`UsersReport_${dateStr}.pdf`);
-  
-  
-  
+
+
+
     //
-  
+
   }
-  
-  const generateReportForallOrders = () =>{
+
+  const generateReportForallOrders = () => {
     const doc = new jsPDF();
-  
-  
+
+
     // define the columns we want and their titles
     const tableColumn = ["Order ID", "Status", "No of Service requested", "Price paid"];
     // define an empty array of rows
-    const tableRows = []; 
+    const tableRows = [];
     // for each services pass all its data into an array
-    
+
     // called date-fns to format the date on the ticket
-   
-  
+
+
     // for each ticket pass all its data into an array
     orders.forEach(item => {
       const itemData = [
@@ -260,20 +264,20 @@ const ReportsCard = ({ type }) => {
       // push each tickcet's info into a row
       tableRows.push(itemData);
     });
-   
-  
-    doc.autoTable(tableColumn, tableRows, { startY: 20, styles : { halign : 'center'}, headStyles :{fillColor : [0,154,23]} },);
+
+
+    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'center' }, headStyles: { fillColor: [0, 154, 23] } },);
 
     const date = Date().split(" ");
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
-   
+
     // ticket title. and margin-top + margin-left
     doc.text("Collection Orders by customers", 75, 15);
 
     var offsetY = 13.797777777777778; //var offsetY is for spacing
     var lineHeight = 7.49111111111111; //var lineHeight is for Spacing
-    
+
 
     var img = new Image(); //this mount a variable to img
     img.src = ll //asign the src to the img variable
@@ -284,10 +288,10 @@ const ReportsCard = ({ type }) => {
 
     // we define the name of our PDF file.
     doc.save(`OrdersReport_${dateStr}.pdf`);
-  
-  
+
+
     //
-  
+
   }
 
 
@@ -296,7 +300,7 @@ const ReportsCard = ({ type }) => {
       <div className="left">
         <div className="title">{data.title}</div>
         {/* <div className="counter">{data.isMoney && ""}{data.counter} </div> */}
-        <div className="link" >{data.link }</div>   
+        <div className="link" >{data.link}</div>
 
 
       </div>

@@ -86,7 +86,7 @@ const ProcessOrder = () => {
                     </div>
                     <div>
                       <p>Phone:</p>
-                      <span>
+                      <span>0
                         {order.locationInfo && order.locationInfo.phoneNo}
                       </span>
                     </div>
@@ -94,7 +94,8 @@ const ProcessOrder = () => {
                       <p>Address:</p>
                       <span>
                         {order.locationInfo &&
-                          `${order.locationInfo.address}, ${order.locationInfo.city}, ${order.locationInfo.state}, ${order.locationInfo.pinCode}, ${order.locationInfo.country}`}
+                          // `${order.locationInfo.address}, ${order.locationInfo.city}, ${order.locationInfo.state}, ${order.locationInfo.pinCode}, ${order.locationInfo.country}`}
+                          `${order.locationInfo.address},${order.locationInfo.pinCode}, ${order.locationInfo.city}, ${order.locationInfo.state},  ${order.locationInfo.country} ,${order.locationInfo.ward}, ${order.locationInfo.plotNo},`}
                       </span>
                     </div>
                   </div>

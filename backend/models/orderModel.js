@@ -28,6 +28,14 @@ const orderSchema = new mongoose.Schema({
             type: Number,
             required: true,
         },
+        ward: {
+            type: String,
+            required: true,
+        },
+        plotNo: {
+            type: Number,
+            required: true,
+        },
     },
     orderItems: [
         {

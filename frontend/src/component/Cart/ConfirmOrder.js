@@ -24,7 +24,7 @@ const navigate = useNavigate();
 
   const totalPrice = subtotal + tax + collectionPrice;
 
-  const address = `${locationInfo.address}, ${locationInfo.city}, ${locationInfo.state}, ${locationInfo.pinCode}, ${locationInfo.country}`;
+  const address = `${locationInfo.address},${locationInfo.pinCode}, ${locationInfo.city}, ${locationInfo.state},  ${locationInfo.country} ,${locationInfo.ward}, ${locationInfo.plotNo},`;
 
   const proceedToPayment = () => {
     const data = {

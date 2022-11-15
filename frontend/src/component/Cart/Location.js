@@ -8,6 +8,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import PublicIcon from "@mui/icons-material/Public";
 import PhoneIcon from "@mui/icons-material/Phone";
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStation";
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
@@ -26,6 +28,9 @@ const Location = () => {
   const [country, setCountry] = useState(locationInfo.country);
   const [pinCode, setPinCode] = useState(locationInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(locationInfo.phoneNo);
+  const [ward, setward] = useState(locationInfo.ward);
+  const [plotNo, setplotNo] = useState(locationInfo.plotNo);
+
 
   const locationSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +40,7 @@ const Location = () => {
       return;
     }
     dispatch(
-      saveLocationInfo({ address, city, state, country, pinCode, phoneNo })
+      saveLocationInfo({ address, city, state, country, pinCode, phoneNo, plotNo, ward})
     );
     navigate("/order/confirm");
   };
@@ -65,7 +70,16 @@ const Location = () => {
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
-
+            <div>
+              <PinDropIcon />
+              <input
+                type="number"
+                placeholder="Postal Code"
+                required
+                value={pinCode}
+                onChange={(e) => setPinCode(e.target.value)}
+              />
+            </div>
             <div>
               <LocationCityIcon />
               <input
@@ -76,17 +90,28 @@ const Location = () => {
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
-
             <div>
-              <PinDropIcon />
+              <HomeWorkIcon />
               <input
-                type="number"
-                placeholder="Pin Code"
+                type="text"
+                placeholder="Ward"
                 required
-                value={pinCode}
-                onChange={(e) => setPinCode(e.target.value)}
+                value={ward}
+                onChange={(e) => setward(e.target.value)}
               />
             </div>
+            <div>
+              <HolidayVillageIcon />
+              <input
+                type="number"
+                placeholder="PlotNo"
+                required
+                value={plotNo}
+                onChange={(e) => setplotNo(e.target.value)}
+              />
+            </div>
+
+           
 
             <div>
               <PhoneIcon />
