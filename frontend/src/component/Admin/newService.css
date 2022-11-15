@@ -1,6 +1,4 @@
-.Sidebar{      
-  padding-top: 105px;
-        } 
+
 .newServiceContainer {
     width: 100%;
     box-sizing: border-box;
@@ -10,6 +8,7 @@
     flex-direction: column;
     height: 100vh;
   }
+  
  
   .newServiceContainer h1 {
     color: rgba(0, 0, 0, 0.733);
@@ -106,9 +105,15 @@
   }
   
   @media screen and (max-width: 600px) {
+    .dashboard{
+      flex-direction:column; 
+    }
     .newServiceContainer {
       background-color: rgb(255, 255, 255);
+      flex-direction:column; 
+
     }
+   
       
     .createServiceForm {
       padding: 5vmax;

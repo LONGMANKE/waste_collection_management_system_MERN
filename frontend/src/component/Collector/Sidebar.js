@@ -8,7 +8,7 @@ import {
 	FaBars
 } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
-import "./Sidebar.css";
+import "./Sidebar1.css";
 // import PersonIcon from '@mui/icons-material/Person';
 // import StoreMallDirectoryOutlinedIcon from '@mui/icons-material/StoreMallDirectoryOutlined';
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';

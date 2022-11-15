@@ -1,7 +1,4 @@
-.dashboard{
-  display: flex;  
-}
-  
+
 .ServiceListContainer {
   width: 100%;
   box-sizing: border-box;
@@ -62,8 +59,13 @@
 }
 
 @media screen and (max-width: 600px) {
+  .dashboard{
+    flex-direction: column;
+  }
+    
   .ServiceListTable div {
     font: 300 4vw "Roboto";
     display: flex;
+  
      }
 }

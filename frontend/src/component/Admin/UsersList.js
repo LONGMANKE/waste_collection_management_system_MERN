@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState} from "react";
 import { DataGrid } from "@material-ui/data-grid";
-// import "./ServiceList.css";
+import "./ServiceList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate} from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -9,8 +9,8 @@ import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Sidebar from "./Sidebar"
-// import "./dashboard.scss"
-// import "./animation.css"
+import "./dashboard.scss"
+import "./animation.css"
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
