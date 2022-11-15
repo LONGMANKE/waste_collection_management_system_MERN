@@ -16,11 +16,12 @@ import "jspdf-autotable";
 // Date Fns is used to format the dates we receive
 // from our API call
 import { format } from "date-fns";
-
+import ll from "./1.png"
 
 
 
 const ReportsCard = ({ type }) => {
+
 
   const dispatch = useDispatch();
 
@@ -152,10 +153,25 @@ const ReportsCard = ({ type }) => {
     const date = Date().split(" ");
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+   
     // ticket title. and margin-top + margin-left
-    doc.text("The services being offered", 14, 15);
+    doc.text("Services provided by the company", 75, 15);
+
+    var offsetY = 13.797777777777778; //var offsetY is for spacing
+    var lineHeight = 7.49111111111111; //var lineHeight is for Spacing
+    
+
+    var img = new Image(); //this mount a variable to img
+    img.src = ll //asign the src to the img variable
+    doc.addImage(img, 'png', 100, doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY, 20, 20)// use the method doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY to be able to position the image of the signature below the table at a safe distance from it 
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5.5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 6 + offsetY, "Admin  Waste  CSM") //more text
+
+
     // we define the name of our PDF file.
-    doc.save(`report_${dateStr}.pdf`);
+    doc.save(`ServicesReport_${dateStr}.pdf`);
+  
+  
   
   
   
@@ -197,23 +213,20 @@ const ReportsCard = ({ type }) => {
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
    
     // ticket title. and margin-top + margin-left
-    doc.text("The services being offered", 85, 15);
+    doc.text("Authorised users in the system", 75, 15);
 
-    var offsetY = 14.797777777777778; //var offsetY is for spacing
-    var lineHeight = 16.49111111111111; //var lineHeight is for Spacing
-    // var fontSize = 12;
-    // doc.text(85, 10, "Tabla de Prestamo");//asignate coordinates to the title
-    // doc.setFontSize(fontSize);
+    var offsetY = 13.797777777777778; //var offsetY is for spacing
+    var lineHeight = 7.49111111111111; //var lineHeight is for Spacing
 
-    // var img = new Image(); //this mount a variable to img
-    // img.src = './i.png' //asign the src to the img variable
-    // doc.addImage(img, 'png', 100, )// use the method doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY to be able to position the image of the signature below the table at a safe distance from it 
-    doc.text(90, doc.autoTable.previous.finalY + lineHeight * 5 + offsetY, "Juan Jose Urquiza") // later add the text below the signature
-    doc.text(89, doc.autoTable.previous.finalY + lineHeight * 6 + offsetY, "Gerente FinanceAR") //more text
+    var img = new Image(); //this mount a variable to img
+    img.src = ll //asign the src to the img variable
+    doc.addImage(img, 'png', 100, doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY, 20, 20)// use the method doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY to be able to position the image of the signature below the table at a safe distance from it 
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5.5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 6 + offsetY, "Admin  Waste  CSM") //more text
 
 
     // we define the name of our PDF file.
-    doc.save(`report_${dateStr}.pdf`);
+    doc.save(`UsersReport_${dateStr}.pdf`);
   
   
   
@@ -254,11 +267,23 @@ const ReportsCard = ({ type }) => {
     const date = Date().split(" ");
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+   
     // ticket title. and margin-top + margin-left
-    doc.text("The services being offered", 14, 15);
+    doc.text("Collection Orders by customers", 75, 15);
+
+    var offsetY = 13.797777777777778; //var offsetY is for spacing
+    var lineHeight = 7.49111111111111; //var lineHeight is for Spacing
+    
+
+    var img = new Image(); //this mount a variable to img
+    img.src = ll //asign the src to the img variable
+    doc.addImage(img, 'png', 100, doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY, 20, 20)// use the method doc.autoTable.previous.finalY + lineHeight * 1.5 + offsetY to be able to position the image of the signature below the table at a safe distance from it 
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 5 + offsetY, "Simon Mburu Njoroge") // later add the text below the signature
+    doc.text(85, doc.autoTable.previous.finalY + lineHeight * 6 + offsetY, "Admin  Waste  CSM") //more text
+
+
     // we define the name of our PDF file.
-    doc.save(`report_${dateStr}.pdf`);
-  
+    doc.save(`OrdersReport_${dateStr}.pdf`);
   
   
     //

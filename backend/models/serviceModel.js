@@ -63,7 +63,8 @@ const serviceSchema = mongoose.Schema({
             },
             comment: {
                 type: String,
-                required: true,
+                // required: true,
+                default:"WOW"
             }
         }
     ],
