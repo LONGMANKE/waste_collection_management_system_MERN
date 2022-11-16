@@ -71,26 +71,31 @@
     position: absolute;
     top: 10vmax;
     left: 4vmax;
+    color: #008710;
   }
+  
   
   .categoryBox {
     padding: 0%;
+    color: #008710;
   }
   
   .category-link {
     list-style: none;
-    color: rgba(0, 0, 0, 0.61);
+    /* color: rgba(0, 0, 0, 0.61); */
     font: 400 0.8vmax "Roboto";
     margin: 0.4vmax;
     cursor: pointer;
     transition: all 0.5s;
+    color: #008710;
   }
   .category-link:hover {
     color: #008710;
   }
+
   
   .filterBox > fieldset {
-    border: 1px solid rgba(0, 0, 0, 0.329);
+    border: 1px solid #008710;
   }
   
   @media screen and (max-width: 600px) {
@@ -98,6 +103,7 @@
       width: 20vmax;
       position: static;
       margin: auto;
+      color: #008710;
     }
   
     .page-link {

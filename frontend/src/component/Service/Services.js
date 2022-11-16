@@ -16,20 +16,20 @@ import { useParams } from "react-router-dom";
 const categories = [
     "Complete",
     "Moderate",
-    "Normal", 
+    "Normal",
 ];
 
 const Services = () => {
 
     const dispatch = useDispatch();
     const alert = useAlert();
-  const { keyword} = useParams();
+    const { keyword } = useParams();
 
     const [currentPage, setcurrentPage] = useState(1)
     const [price, setPrice] = useState([0, 1000]);
     const [category, setCategory] = useState("");
-  const [ratings, setRatings] = useState(0);
-    const { loading, services, error,servicesCount,resultPerPage, filteredServicesCount } = useSelector((state) => state.services);
+    const [ratings, setRatings] = useState(0);
+    const { loading, services, error, servicesCount, resultPerPage, filteredServicesCount } = useSelector((state) => state.services);
 
 
 
@@ -45,10 +45,10 @@ const Services = () => {
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
-          }
+        }
 
         dispatch(getService(keyword, currentPage, price, category, ratings))
-    }, [dispatch,error, keyword, currentPage, price, category, ratings, alert]);
+    }, [dispatch, error, keyword, currentPage, price, category, ratings, alert]);
 
 
 
@@ -72,15 +72,14 @@ const Services = () => {
 
                     <div className="filterBox">
                         <Typography>Price</Typography>
-                        <Slider
+                       <div className="dd"><Slider 
                             value={price}
                             onChange={priceHandler}
-                            valueLabelDisplay="auto"
+                            // valueLabelDisplay="auto"
                             aria-labelledby="range-slider"
                             min={0}
                             max={1000}
-                        />
-
+                        /></div> 
                         <Typography>Categories</Typography>
                         <ul className="categoryBox">
                             {categories.map((category) => (
@@ -95,18 +94,18 @@ const Services = () => {
                         </ul>
 
                         <fieldset>
-              <Typography component="legend">Ratings Above</Typography>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                min={0}
-                max={5}
-              />
-            </fieldset>
+                            <Typography component="legend">Ratings Above</Typography>
+                            <Slider
+                                value={ratings}
+                                onChange={(e, newRating) => {
+                                    setRatings(newRating);
+                                }}
+                                aria-labelledby="continuous-slider"
+                                valueLabelDisplay="auto"
+                                min={0}
+                                max={5}
+                            />
+                        </fieldset>
                     </div>
 
                     {resultPerPage < count && (

@@ -12,14 +12,13 @@ const Dashboard = () => {
     <div className="home">
       <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={navVisible} show={showNavbar} /></div>
       <div className="homeContainer">
-        <h1 id="ServiceListHeading">ADMIN DASHBOARD</h1>
+        <div className="ServiceListHeading1">ADMIN DASHBOARD</div>
         <div className="widgets">
           <Widget type="user" />
           <Widget type="orders" />
           <Widget type="services" />
           <Widget type="balance" />
         </div>
-        <div className="gg"></div>
         <div className="listContainer">
           <div className="listTitle">Services Preview</div>
           <List />
