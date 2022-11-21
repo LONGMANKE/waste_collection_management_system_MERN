@@ -1,42 +1,42 @@
-.widget{
+.widget1{
     margin-right: 20px;
     display: flex;
     justify-content: space-between;
     flex: 1;
     padding: 10px;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0.47);
-    box-shadow: 2px 4px 10px 1px rgba(21, 169, 16, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     border-radius: 10px;
     height: 100px;
     
-    .left, .right{
+    .left1, .right1{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
 
-    .title{
+    .title1{
         font-weight: bold; 
         font-style: 14px;
         color: #008710;
         
     }
-    .title:hover{
+    .title1:hover{
         color: #870000;
         // background-color: #fff;
     }
-    .counter{
+    .counter1{
         font-size: 28px;
         font-weight: 300;
         align-items: center;
     }
-    .link{
+    .link1{
         font-size: 12px;
         border-bottom: 1px solid rgb(139, 139, 139);
         color: #008710;;
         width: max-content;
     }
-    .percentage{
+    .percentage1{
         display: flex;
         align-items: center;
         font-style: 14px;
@@ -48,7 +48,7 @@
             color: red;
         }
     }
-    .icon{
+    .icon1{
         font-style: 18px; 
         border-radius: 5px;
         align-self: flex-end;

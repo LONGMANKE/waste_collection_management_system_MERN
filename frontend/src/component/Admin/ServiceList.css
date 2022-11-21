@@ -13,7 +13,8 @@
   font: 400 2rem "Roboto";
   padding: 0.5vmax;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.637);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+   color: rgba(0, 0, 0, 0.637);
   transition: all 0.5s;
   margin: 2rem;
   text-align: center;

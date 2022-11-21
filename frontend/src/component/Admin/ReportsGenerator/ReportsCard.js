@@ -12,7 +12,7 @@ import { getAllOrders } from "../../../actions/orderActions";
 import { getAllUsers } from "../../../actions/userAction.js";
 import { Link } from "react-router-dom";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import "jspdf-autotable"; 
 // Date Fns is used to format the dates we receive
 // from our API call
 import { format } from "date-fns";
@@ -296,15 +296,15 @@ const ReportsCard = ({ type }) => {
 
 
   return (
-    <div className="widget">
-      <div className="left">
-        <div className="title">{data.title}</div>
+    <div className="widget1">
+      <div className="left1">
+        <div className="title1">{data.title}</div>
         {/* <div className="counter">{data.isMoney && ""}{data.counter} </div> */}
-        <div className="link" >{data.link}</div>
+        <div className="link1" >{data.link}</div>
 
 
       </div>
-      <div className="right">
+      <div className="right1">
         {/* <div className="percentage positive">
           <KeyboardArrowUpIcon />
           {data.diff}
