@@ -128,7 +128,7 @@ const ReportsCard = ({ type }) => {
 
 
     // define the columns we want and their titles
-    const tableColumn = ["Service ID", "Name", "Available", "Price", "Date"];
+    const tableColumn = ["Name", "Available", "Price", "Date"];
     // define an empty array of rows
     const tableRows = [];
     // for each services pass all its data into an array
@@ -139,7 +139,7 @@ const ReportsCard = ({ type }) => {
     // for each ticket pass all its data into an array
     services.forEach(item => {
       const itemData = [
-        item._id,
+        // item._id,
         item.name,
         item.Stock,
         item.price,
@@ -152,7 +152,7 @@ const ReportsCard = ({ type }) => {
     });
 
 
-    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'center' }, headStyles: { fillColor: [0, 154, 23] } },);
+    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'left' }, headStyles: { fillColor: [0, 154, 23] } },);
 
     const date = Date().split(" ");
     // we use a date string to generate our filename.
@@ -188,7 +188,7 @@ const ReportsCard = ({ type }) => {
 
 
     // define the columns we want and their titles
-    const tableColumn = ["User ID", "Email", "Role", "Name"];
+    const tableColumn = ["Email", "Role", "Name"];
     // define an empty array of rows
     const tableRows = [];
     // for each services pass all its data into an array
@@ -199,7 +199,7 @@ const ReportsCard = ({ type }) => {
     // for each ticket pass all its data into an array
     users.forEach(item => {
       const itemData = [
-        item._id,
+        // item._id,
         item.email,
         item.role,
         item.name,
@@ -211,7 +211,7 @@ const ReportsCard = ({ type }) => {
     });
 
 
-    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'center' }, headStyles: { fillColor: [0, 154, 23] } },);
+    doc.autoTable(tableColumn, tableRows, { startY: 20, styles: { halign: 'left' }, headStyles: { fillColor: [0, 154, 23] } },);
     const date = Date().split(" ");
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];

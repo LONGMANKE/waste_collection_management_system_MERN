@@ -16,8 +16,10 @@ const sendEmail = async (options) => {
             
             // user: process.env.SMPT_MAIL,
             // pass: process.env.SMPT_PASSWORD,
-            user: "50c85c38319e60",
-            pass: "647b2efbbb5347"
+            // user: "50c85c38319e60",
+            // pass: "647b2efbbb5347"
+            user: process.env.SMPT_MAIL1,
+            pass: process.env.SMPT_PASSWORD1,
         },
         secureConnection: false,
     },  
