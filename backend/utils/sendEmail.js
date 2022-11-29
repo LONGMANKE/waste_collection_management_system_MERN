@@ -5,16 +5,19 @@ const OAuth2 = require('google-auth-library');
 const sendEmail = async (options) => {
 
     const transporter = nodeMailer.createTransport({
-        host: process.env.SMPT_HOST,
-        port: process.env.SMPT_PORT,
+        // host: process.env.SMPT_HOST,
+        // port: process.env.SMPT_PORT,
+        host: "smtp.mailtrap.io",
+        port: 2525,
         // service: 'gmail',
-        // type: "SMTP",
+        // type: "SMTP", 
         secure: false,
         auth: {
             
-            user: process.env.SMPT_MAIL,
-            pass: process.env.SMPT_PASSWORD,
-          
+            // user: process.env.SMPT_MAIL,
+            // pass: process.env.SMPT_PASSWORD,
+            user: "50c85c38319e60",
+            pass: "647b2efbbb5347"
         },
         secureConnection: false,
     },  
