@@ -6,7 +6,7 @@ const User = require("../models/userModel")
 
 
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
-    //if it is just token with no {} the token will be siplayed in the terminal as {tjhsvfdgvshd}    
+    //if it is just token with no {} the token will be displayed in the terminal as {tjhsvfdgvshd}    
     const { token } = req.cookies;
     //to see in  console.log(token);
 

@@ -36,7 +36,7 @@ const {id} =useParams();
               <Typography component="h1">
                 Order #{order && order._id}
               </Typography>
-              <Typography>Shipping Info</Typography>
+              <Typography>Collection Info</Typography>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>Name:</p>
