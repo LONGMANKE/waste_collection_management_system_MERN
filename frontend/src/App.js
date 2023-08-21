@@ -42,6 +42,10 @@ import ServiceReviews from "./component/Admin/ServiceReviews.js";
 import Contact from "./component/layout/Contact/Contact.js";
 import NotFound from "./component/layout/Not Found/NotFound.js";
 import Search from "./component/Service/Search";
+
+import NewProduct from "./component/Admin/NewProduct";
+import ProductDetails from "./component/Product/ProductDetails.js"
+import Products from "./component/Product/Products.js"
 // import ServiceReport from './component/Admin/ReportsGenerator/ServiceReport';
 
 import { Elements } from "@stripe/react-stripe-js";
@@ -88,9 +92,14 @@ function App() {
         <Route exact path="/services" element={<Services />} />
         <Route exact path="/services/:keyword" element={<Services />} />
         <Route exact path="/service/:id" element={<ServiceDetails />} />
+
         <Route exact path="/about" element={<About />} />
         <Route exact path="/search" element={<Search />} />
         <Route exact path="/contact" element={<Contact />} />
+
+        <Route exact path="/products" element={<Products />} />
+        <Route exact path="/products/:keyword" element={<Products />} />
+        <Route exact path="/product/:id" element={<ProductDetails />} />
  
         {/* auth */}
         <Route exact path="/login" element={<LoginSignUp />} />
@@ -113,8 +122,9 @@ function App() {
         <Route isAdmin={true} exact path="/admin/dashboard" element={<ProtectedRoute component={Dashboard} />} />
         <Route isAdmin={true} exact path="/admin/users" element={<ProtectedRoute component={UsersList} />} />
         <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ServiceList} />} />
-        {/* <Route isAdmin={true} exact path="/admin/services" element={<ProtectedRoute component={ServiceReport} />} /> */}
         <Route isAdmin={true} exact path="/admin/service" element={<ProtectedRoute component={NewService} />} />
+        <Route isAdmin={true} exact path="/admin/product" element={<ProtectedRoute component={NewProduct} />} />
+
         <Route isAdmin={true} exact path="/admin/service/:id" element={<ProtectedRoute component={updateService} />} />
         <Route isAdmin={true} exact path="/admin/orders" element={<ProtectedRoute component={OrderList} />} />
         <Route isAdmin={true} exact path="/admin/order/:id" element={<ProtectedRoute component={ProcessOrder} />} />

@@ -67,6 +67,10 @@ function Sidebar({visible, show}) {
 							<AddIcon size={ICON_SIZE} />
 							<span>Create Service</span> 
 						</NavLink>
+						<NavLink to="/admin/product" className="nav-link">
+							<AddIcon size={ICON_SIZE} />
+							<span>Create Product</span> 
+						</NavLink>
 						<NavLink to="/admin/users" className="nav-link">
 							<PersonIcon size={ICON_SIZE} />
 							<span>All Users </span>

@@ -1,10 +1,10 @@
 
 import React, { Fragment, useEffect, useState } from "react";
-import "./Services.css"
+import "./Products.css"
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getService } from "../../actions/serviceAction";
+import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
-import ServiceCard from "../Home/ServiceCard";
+import ProductCard from "../Home/ProductCard";
 import MetaData from "../../component/layout/MetaData"
 import Pagination from "react-js-pagination"
 import { Slider } from '@mui/material';
@@ -14,10 +14,11 @@ import { useParams } from "react-router-dom";
 
 
 const categories = [
-    "Organic Waste", "E-Waste (Electronic Waste)",  "Construction and Demolition Waste", "Medical Waste", "Textile Waste", "Plastic Waste", "Metal Waste", "Glass Waste", "Paper Waste", "Household Hazardous Waste",  "Agricultural Waste", 
+    "Reclaimed Materials for Construction", "Upcycled Fashion and Textiles", "Recycled Plastics", "Recycled Paper Products", "Electronics and E-Waste Refurbishment",
+
 ];
 
-const Services = () => {
+const Products = () => {
 
     const dispatch = useDispatch();
     const alert = useAlert();
@@ -27,7 +28,7 @@ const Services = () => {
     const [price, setPrice] = useState([0, 1000]);
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
-    const { loading, services, error, servicesCount, resultPerPage, filteredServicesCount } = useSelector((state) => state.services);
+    const { loading, products, error, ProductsCount, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
 
 
 
@@ -37,7 +38,7 @@ const Services = () => {
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
     };
-    let count = filteredServicesCount;
+    let count = filteredProductsCount;
 
     useEffect(() => {
         if (error) {
@@ -45,7 +46,7 @@ const Services = () => {
             dispatch(clearErrors());
         }
 
-        dispatch(getService(keyword, currentPage, price, category, ratings))
+        dispatch(getProduct(keyword, currentPage, price, category, ratings))
     }, [dispatch, error, keyword, currentPage, price, category, ratings, alert]);
 
 
@@ -57,13 +58,13 @@ const Services = () => {
                 <Loader />
             ) : (
                 <Fragment>
-                    <MetaData title="SERVICES -- WASTE" />
-                    <h2 className="servicesHeading">SERVICES</h2>
+                    <MetaData title="RECYCLED--PRODUCTS" />
+                    <h2 className="productsHeading">PRODUCTS</h2>
 
-                    <div className="services">
-                        {services &&
-                            services.map((service) => (
-                                <ServiceCard key={service._id} service={service} />
+                    <div className="products">
+                        {products &&
+                            products.map((products) => (
+                                <ProductCard key={products._id} product={products} />
                             ))}
                     </div>
 
@@ -111,7 +112,7 @@ const Services = () => {
                             <Pagination
                                 activePage={currentPage}
                                 itemsCountPerPage={resultPerPage}
-                                totalItemsCount={servicesCount}
+                                totalItemsCount={ProductsCount}
                                 onChange={setCurrentPageNo}
                                 nextPageText="Next"
                                 prevPageText="Prev"
@@ -130,4 +131,4 @@ const Services = () => {
     )
 }
 
-export default Services 
+export default  Products

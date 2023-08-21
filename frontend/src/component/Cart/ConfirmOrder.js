@@ -46,7 +46,7 @@ const navigate = useNavigate();
       <div className="confirmOrderPage">
         <div>
           <div className="confirmshippingArea">
-            <Typography>Shipping Info</Typography>
+            <Typography>Collection Info</Typography>
             <div className="confirmshippingAreaBox">
               <div>
                 <p>Name:</p>

@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./animation.css"
-import "./newService.css";
+import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createService } from "../../actions/serviceAction";
+import { clearErrors, createProduct } from "../../actions/productAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
@@ -12,17 +12,17 @@ import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Sidebar from "./Sidebar";
-import { NEW_SERVICE_RESET } from "../../constants/serviceConstants";
+import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { useNavigate } from "react-router-dom";
 
-const NewService = () => {
+const NewProduct = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate()
   const [navVisible, showNavbar] = useState(false);
 
 
-  const { loading, error, success } = useSelector((state) => state.newService);
+  const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -33,7 +33,7 @@ const NewService = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Organic Waste", "E-Waste (Electronic Waste)", "Construction and Demolition Waste", "Medical Waste", "Textile Waste", "Plastic Waste", "Metal Waste", "Glass Waste", "Paper Waste", "Household Hazardous Waste",  "Agricultural Waste",
+    "Reclaimed Materials for Construction", "Upcycled Fashion and Textiles", "Recycled Plastics", "Recycled Paper Products", "Electronics and E-Waste Refurbishment", "Renewable Energy Infrastructure", "Compost and Organic Fertilizers", "Recycled Glass Products", "Reclaimed Wood Products", "Automotive Parts from Recycling", "Recycled Packaging Solutions", "Recycled Accessories and Art", "Green Building Materials", "Recycled Rubber Products", "Water Filtration and Treatment Systems", 
 ];
 
   useEffect(() => {
@@ -43,13 +43,13 @@ const NewService = () => {
     }
 
     if (success) {
-      alert.success("Service Created Successfully");
+      alert.success("Product Created Successfully");
       navigate("/admin/dashboard");
-      dispatch({ type: NEW_SERVICE_RESET });
+      dispatch({ type: NEW_PRODUCT_RESET });
     }
   }, [dispatch, alert,navigate, error, success]);
 
-  const createServiceSubmitHandler = (e) => {
+  const createProductSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -63,10 +63,10 @@ const NewService = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(createService(myForm));
+    dispatch(createProduct(myForm));
   };
 
-  const createServiceImagesChange = (e) => {
+  const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
     setImages([]);
@@ -88,24 +88,24 @@ const NewService = () => {
 
   return (
     <Fragment>
-      <MetaData title="Create Service" />
+      <MetaData title="Create Product" />
       <div className="dashboard">
       <div className={!navVisible ? "page" : "page page-with-navbar"}> <Sidebar visible={ navVisible } show={ showNavbar }/></div>
 
 
-        <div className="newServiceContainer">
+        <div className="newProductContainer">
           <form
-            className="createServiceForm"
+            className="createProductForm"
             encType="multipart/form-data"
-            onSubmit={createServiceSubmitHandler}
+            onSubmit={createProductSubmitHandler}
           >
-            <h1>Create Service</h1>
+            <h1>Create Product</h1>
 
             <div>
               <SpellcheckIcon />
               <input
                 type="text"
-                placeholder="Service Name"
+                placeholder="Product Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -125,7 +125,7 @@ const NewService = () => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Service Description"
+                placeholder="Product Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
@@ -155,24 +155,24 @@ const NewService = () => {
               />
             </div>
 
-            <div id="createServiceFormFile">
+            <div id="createProductFormFile">
               <input
                 type="file"
                 name="avatar"
                 accept="image/*"
-                onChange={createServiceImagesChange}
+                onChange={createProductImagesChange}
                 multiple
               />
             </div>
 
-            <div id="createServiceFormImage">
+            <div id="createProductFormImage">
               {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Service Preview" />
+                <img key={index} src={image} alt="Product Preview" />
               ))}
             </div>
 
             <Button
-              id="createServiceBtn"
+              id="createProductBtn"
               type="submit"
               disabled={loading ? true : false}
             >
@@ -185,4 +185,4 @@ const NewService = () => {
   );
 };
 
-export default NewService;
+export default NewProduct;

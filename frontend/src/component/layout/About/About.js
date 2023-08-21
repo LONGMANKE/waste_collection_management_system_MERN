@@ -21,13 +21,12 @@ const About = () => {
               src="https://res.cloudinary.com/dsc2yqare/image/upload/v1663619389/avatars/p8dd3suchhi4str2uhez.png"
               alt="Founder"
             />
-            <Typography>Simon Mburu</Typography>
+            <Typography>GreenTech Collectors</Typography>
             <Button onClick={visitInstagram} color="primary">
               Visit Instagram
             </Button>
             <span>
-              This is a sample wesbite made by Dev Mburu. Only with the
-              purpose to learn MERN Stack.
+              A prototype by group 7 in the challenge "Mylittlebigthing"
             </span>
           </div>
           <div className="aboutSectionContainer2">

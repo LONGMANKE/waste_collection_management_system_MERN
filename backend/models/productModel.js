@@ -20,16 +20,18 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    images: {
-        public_id: {
-            type: String,
-            required: true
+    images:[
+        {
+            public_id: {
+                type: String,
+                required: true
+            },
+            url: {
+                type: String,
+                required: true
+            },
         },
-        url: {
-            type: String,
-            required: true
-        },
-    },
+    ],
     category: {
         type: String,
         required: [true, "Please enter product category"]
@@ -37,7 +39,7 @@ const productSchema = mongoose.Schema({
     Stock: {
         type: Number,
         require: [true, "Please enter product stock"],
-        maxLength: [4, "Stock cannot exceed 4 characters"],
+        maxLength: [4, "Stock cannot exceed 3 characters"],
         default: 1
     },
     numOfReviews: {
@@ -61,7 +63,8 @@ const productSchema = mongoose.Schema({
             },
             comment: {
                 type: String,
-                required: true,
+                // required: true,
+                default:"WOW"
             }
         }
     ],
